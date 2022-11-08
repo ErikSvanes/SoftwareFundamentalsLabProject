@@ -58,6 +58,9 @@ public class ArrayStack<E> implements Stack<E> {
 
 	@Override
 	public void setCapacity(int capacity) throws IllegalArgumentException {
+		if (capacity < size) {
+			throw new IllegalArgumentException("Invalid capacity.");
+		}
 		this.capacity = capacity;
 	}
 
