@@ -12,38 +12,61 @@ import java.util.EmptyStackException;
  *
  */
 public class LinkedStack<E> implements Stack<E> {
-
+	/** The array list for the stack */
+	private LinkedAbstractList<E> stackList;
+	/** The size of the stack */
+	private int size;
+	/** The capacity of the stack */
+	private int capacity;
+	
+	/**
+	 * Constructs the linked stack list
+	 * @param capacity the capacity of the list
+	 */
 	public LinkedStack(int capacity) {
 		
+		stackList = new LinkedAbstractList<E>(capacity);
+		setCapacity(capacity);
+		size = 0;	
 	}
 	
 	@Override
 	public void push(E element) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		if (element == null) {
+			throw new IllegalArgumentException("Invalid element.");
+		}
+		if (size == capacity) {
+			throw new IllegalArgumentException("");
+		}
+		stackList.add(element);
 		
 	}
 
 	@Override
 	public E pop() throws EmptyStackException {
-		// TODO Auto-generated method stub
-		return null;
+		if (isEmpty()) {
+			throw new EmptyStackException();
+		}
+		size--;
+		return stackList.remove(size - 1);
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return size == 0;
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 
 	@Override
 	public void setCapacity(int capacity) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		if (capacity < size) {
+			throw new IllegalArgumentException("Invalid capacity.");
+		}
+		this.capacity = capacity;
 		
 	}
 
