@@ -12,40 +12,53 @@ import java.util.EmptyStackException;
  *
  */
 public class ArrayStack<E> implements Stack<E> {
+	/** The array list for the stack */
 	private ArrayList<E> arrList;
-
+	/** The size of the stack */
+	private int size;
+	/** The capacity of the stack */
+	private int capacity;
+	
+	/**
+	 * The constructor of the array stack, which takes in the capacity
+	 * 
+	 * @param capacity the capacity for the stack
+	 */
 	public ArrayStack(int capacity){
 		arrList = new ArrayList<E>();
+		setCapacity(capacity);
+		size = 0;
 	}
 	
 	@Override
 	public void push(E element) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		
+		if (element == null) {
+			throw new IllegalArgumentException("Invalid element.");
+		}
+		if (size == capacity) {
+			throw new IllegalArgumentException("");
+		}
+		arrList.add(element);
 	}
 
 	@Override
 	public E pop() throws EmptyStackException {
-		// TODO Auto-generated method stub
-		return null;
+		return arrList.remove(size - 1);
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return size == 0;
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 
 	@Override
 	public void setCapacity(int capacity) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		
+		this.capacity = capacity;
 	}
 
 }
