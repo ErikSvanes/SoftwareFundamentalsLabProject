@@ -50,9 +50,10 @@ public class CourseRoll {
 		}
 		
 		this.enrollmentCap = enrollmentCap;
-		if (roll != null) {
+		if(roll != null) {
 			roll.setCapacity(enrollmentCap);
 		}
+		
 	}
 
 	/**
