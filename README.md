@@ -3,7 +3,7 @@
 #Lab 9
 
 | Task | Owner | Due Date | Status |
-| ____ | _____ | ________ | ______ |
+| _ | _ | _ | _ |
 | Bug Fix | Pair Programming | 11/9/22 | Complete |
 | Implement and Test Stack | Pair Programming | 11/9/22 | In Progress |
 | Impelent and Test Queue | Pair Programming | 11/9/22 | Pending | 
