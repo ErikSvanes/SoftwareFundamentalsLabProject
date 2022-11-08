@@ -180,5 +180,16 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 			this.next = next;
 		}
 	}
+	
+	/**
+	 * Method to set the capacity
+	 * @param capacity the capacity of the list
+	 */
+	public void setCapacity(int capacity) {
+		if(capacity < 0 || capacity < size) {
+			throw new IllegalArgumentException("Invalid capacity.");
+		}
+		this.capacity = capacity;
+	}
 
 }

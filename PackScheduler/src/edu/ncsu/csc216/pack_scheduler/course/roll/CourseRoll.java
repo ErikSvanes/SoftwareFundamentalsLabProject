@@ -119,7 +119,7 @@ public class CourseRoll {
 
 	/**
 	 * Returns the enrollment cap for the course
-	 * 
+	 *
 	 * @return the enrollment cap for the course
 	 */
 	public int getEnrollmentCap() {
