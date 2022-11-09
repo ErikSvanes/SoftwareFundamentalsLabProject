@@ -36,6 +36,9 @@ class ArrayStackTest<E> {
 	@Test
 	void testIsEmpty() {
 		ArrayStack<Course> as = new ArrayStack<Course>(5);
+		assertTrue(as.isEmpty());
+		as.push(new Course("CSC216", "Software Development Fundamentals", "001", 3, "sesmith5", 100, "MW", 1330, 1445));
+		assertFalse(as.isEmpty());
 	}
 	
 	@Test 
