@@ -22,6 +22,9 @@ class ArrayStackTest<E> {
 		assertThrows(IllegalArgumentException.class, () -> as.push(null));
 		as.push(new Course("CSC216", "Software Development Fundamentals", "001", 3, "sesmith5", 100, "MW", 1330, 1445));
 		assertTrue(as.size() == 1);
+		as.setCapacity(1);
+		assertThrows(IllegalArgumentException.class, () -> as.push(new Course("CSC217", "Software Development Fundamentals Lab", "001", 3, "sesmith5", 100, "TH", 1330, 1445)));
+		
 	}
 	
 	@Test
@@ -43,11 +46,14 @@ class ArrayStackTest<E> {
 	
 	@Test 
 	void testSize() {
-		
+		//Tested in another method.
 	}
 	
 	@Test 
 	void testSetCapacity() {
-		
+		ArrayStack<Course> as = new ArrayStack<Course>(5);
+		assertDoesNotThrow(() -> as.setCapacity(1));
+		as.push(new Course("CSC216", "Software Development Fundamentals", "001", 3, "sesmith5", 100, "MW", 1330, 1445));
+		assertThrows(IllegalArgumentException.class, () -> as.setCapacity(0));
 	}
 }

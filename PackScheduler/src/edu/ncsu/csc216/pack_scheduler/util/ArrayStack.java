@@ -44,7 +44,7 @@ public class ArrayStack<E> implements Stack<E> {
 			throw new IllegalArgumentException("Invalid element.");
 		}
 		if (size == capacity) {
-			throw new IllegalArgumentException("");
+			throw new IllegalArgumentException();
 		}
 		arrList.add(element);
 		size++;
