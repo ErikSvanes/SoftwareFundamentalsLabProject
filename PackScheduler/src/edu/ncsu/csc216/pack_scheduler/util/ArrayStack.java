@@ -58,11 +58,12 @@ public class ArrayStack<E> implements Stack<E> {
 	 */
 	@Override
 	public E pop() throws EmptyStackException {
-		if (isEmpty()) {
+		if (arrList.isEmpty()) {
 			throw new EmptyStackException();
 		}
 		size--;
-		return arrList.remove(size - 1);
+		return arrList.remove(size);
+		
 	}
 
 	/**
