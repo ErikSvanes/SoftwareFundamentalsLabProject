@@ -48,7 +48,7 @@ public class LinkedStack<E> implements Stack<E> {
 			throw new EmptyStackException();
 		}
 		size--;
-		return stackList.remove(size - 1);
+		return stackList.remove(size);
 	}
 
 	@Override
