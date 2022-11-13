@@ -46,12 +46,6 @@ public class ArrayQueue<E> implements Queue<E> {
 		size++;
 	}
 	
-	/**
-	 * Method that sets the capacity to the parameter if it is valid
-	 * 
-	 * @param capacity the new capacity for the stack
-	 * @throws IllegalArgumentException if the parameter is invalid
-	 */
 	@Override
 	public void setCapacity(int capacity) throws IllegalArgumentException {
 		if (capacity <= 0 || capacity < size) {
@@ -60,9 +54,6 @@ public class ArrayQueue<E> implements Queue<E> {
 		this.capacity = capacity;
 	}
 
-	/**
-	 * 
-	 */
 	@Override
 	public E dequeue() throws NoSuchElementException {
 		if(arrList.size() == 0) {

@@ -62,11 +62,10 @@ public class LinkedStack<E> implements Stack<E> {
 
 	@Override
 	public void setCapacity(int capacity) throws IllegalArgumentException {
-		if (capacity < size) {
+		if (capacity <= 0 || capacity < size) {
 			throw new IllegalArgumentException("Invalid capacity.");
 		}
 		this.capacity = capacity;
-		
 	}
 
 }
