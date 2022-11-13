@@ -3,6 +3,7 @@
  */
 package edu.ncsu.csc216.pack_scheduler.course.roll;
 
+import edu.ncsu.csc216.pack_scheduler.course.Course;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 import edu.ncsu.csc216.pack_scheduler.util.LinkedAbstractList;
 
@@ -21,16 +22,24 @@ public class CourseRoll {
 	private static final int MIN_ENROLLMENT = 10;
 	/** The maximum enrollment for the course */
 	private static final int MAX_ENROLLMENT = 250;
+	/** The waitlist cap for a course**/
+	private static final int WAITLIST_SIZE = 10;
 	/** The enrollment cap for the course */
 	private int enrollmentCap;
+	/** The waitlist for the course**/
+	private int waitlist;
 
 	/**
 	 * The constructor for the course roll, which first sets the enrollment cap and
 	 * then creates an empty list roll with the given enrollment cap
 	 * 
 	 * @param enrollmentCap the new enrollment cap
+	 * @param c the course object
 	 */
-	public CourseRoll(int enrollmentCap) {
+	public CourseRoll(int enrollmentCap, Course c) {
+		if(c == null) {
+			throw new IllegalArgumentException();
+		}
 		setEnrollmentCap(enrollmentCap);
 		roll = new LinkedAbstractList<Student>(enrollmentCap);
 	}
