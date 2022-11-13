@@ -24,7 +24,6 @@ public class LinkedStack<E> implements Stack<E> {
 	 * @param capacity the capacity of the list
 	 */
 	public LinkedStack(int capacity) {
-		
 		stackList = new LinkedAbstractList<E>(capacity);
 		setCapacity(capacity);
 		size = 0;	
@@ -36,10 +35,10 @@ public class LinkedStack<E> implements Stack<E> {
 			throw new IllegalArgumentException("Invalid element.");
 		}
 		if (size == capacity) {
-			throw new IllegalArgumentException("");
+			throw new IllegalArgumentException();
 		}
 		stackList.add(element);
-		
+		size++;
 	}
 
 	@Override
