@@ -39,6 +39,7 @@ public class LinkedStack<E> implements Stack<E> {
 			throw new IllegalArgumentException("");
 		}
 		stackList.add(element);
+		size++;
 		
 	}
 
