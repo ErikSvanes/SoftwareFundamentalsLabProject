@@ -26,7 +26,7 @@ public class LinkedQueue<E> implements Queue<E> {
 	public LinkedQueue(int capacity){
 		queueList = new LinkedAbstractList<E>(capacity);
 		//shouldn't have to, but might need to add 
-		//setCapacity(capacity);
+		setCapacity(capacity);
 		size = 0;
 	}
 	
@@ -38,7 +38,7 @@ public class LinkedQueue<E> implements Queue<E> {
 		if (size == capacity) {
 			throw new IllegalArgumentException("");
 		}
-		queueList.add(size - 1, element);
+		queueList.add(size, element);
 		size++;
 		
 	}
