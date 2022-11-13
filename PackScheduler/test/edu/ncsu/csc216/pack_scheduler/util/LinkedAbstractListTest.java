@@ -60,6 +60,8 @@ public class LinkedAbstractListTest {
 		assertEquals(list.size(), 6);
 		assertTrue(list.remove(3).equals(4));
 		assertEquals(list.size(), 5);
+		assertTrue(list.remove(4).equals(6));
+		assertEquals(list.size(), 4);
 	}
 	
 	/**

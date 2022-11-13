@@ -7,6 +7,7 @@ import java.util.AbstractList;
 
 /**
  * The linked list class
+ * 
  * @author drewb
  *
  * @param <E> Element of the linkedlist
@@ -19,6 +20,8 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	int size;
 	/** The capacity of the list */
 	int capacity;
+	/** Points to the last node in the list */
+	ListNode back;
 
 	/**
 	 * The constructor for a linked abstract list
@@ -27,6 +30,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	 */
 	public LinkedAbstractList(int capacity) {
 		front = null;
+		back = null;
 		size = 0;
 		setCapacity(capacity);
 	}
@@ -61,11 +65,19 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		}
 		if (front == null) {
 			front = new ListNode(element);
+			// should reference the same thing
+			back = front;
+			size++;
+			return;
+		} else if (idx == 0) {
+			front = new ListNode(element, front);
 			size++;
 			return;
 		}
-		else if (idx == 0) {
-			front = new ListNode(element, front);
+		// adding constant time case for adding to back of list, avoid traversal
+		else if (idx == size) {
+			back.next = new ListNode(element);
+			back = back.next;
 			size++;
 			return;
 		}
@@ -73,7 +85,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		for (int i = 0; i < idx - 1; i++) {
 			current = current.next;
 		}
-		ListNode savedReference = current.next; 
+		ListNode savedReference = current.next;
 		current.next = new ListNode(element);
 		current.next.next = savedReference;
 		size++;
@@ -97,7 +109,8 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	}
 
 	/**
-	 * Method to remove an element at a given index. Returns the removed element. 
+	 * Method to remove an element at a given index. Returns the removed element.
+	 * 
 	 * @param idx the index to remove
 	 * @return the data of the removed element
 	 */
@@ -110,25 +123,29 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 			front = front.next;
 			size--;
 			return returnValue;
-		} else {
-			ListNode current = front;
-			for (int i = 0; i < idx - 1; i++) {
-				current = current.next;
-			}
-			ListNode returnValue = current.next;
-			current.next = current.next.next;
-			size--;
-			return (E) returnValue.data;
 		}
 
+		ListNode current = front;
+		for (int i = 0; i < idx - 1; i++) {
+			current = current.next;
+		}
+		ListNode returnValue = current.next;
+		current.next = current.next.next;
+		//update back if removing the last element
+		if (idx == size - 1) {
+			back = current;
+		}
+		size--;
+		return (E) returnValue.data;
+
 	}
-	
+
 	/**
-	 * Method to set an element. 
+	 * Method to set an element.
 	 * 
-	 * @param idx index to set 
+	 * @param idx     index to set
 	 * @param element to set the index data to
-	 * @return the data from the overwritten element  
+	 * @return the data from the overwritten element
 	 */
 	public E set(int idx, E element) {
 		if (element == null) {
@@ -145,19 +162,15 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 			current = current.next;
 		}
 		current = front;
-		for(int i = 0; i < idx; i++) {
+		for (int i = 0; i < idx; i++) {
 			current = current.next;
 		}
-//		if (current.next == null) {
-//			current.next = new ListNode(element);
-//			return 
-//		}
 		E returnValue = current.data;
 		current.data = element;
 		System.out.println(current.data);
 		System.out.println(returnValue);
 		return returnValue;
-		
+
 	}
 
 	private class ListNode {
@@ -176,13 +189,14 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 			this.next = next;
 		}
 	}
-	
+
 	/**
 	 * Method to set the capacity
+	 * 
 	 * @param capacity the capacity of the list
 	 */
 	public void setCapacity(int capacity) {
-		if(capacity < 0 || capacity < size) {
+		if (capacity < 0 || capacity < size) {
 			throw new IllegalArgumentException("Invalid capacity.");
 		}
 		this.capacity = capacity;
