@@ -3,12 +3,15 @@
  */
 package edu.ncsu.csc216.pack_scheduler.util;
 
+import java.util.NoSuchElementException;
+
 /**
+ * Class that implements Queue using an underlying ArrayList. 
  * @author Erik
  * @param <E> element of the queue
  *
  */
-public class ArrayQueue<E> {
+public class ArrayQueue<E> implements Queue<E> {
 
 	/** The array list for the stack */
 	private ArrayList<E> arrList;
@@ -17,7 +20,11 @@ public class ArrayQueue<E> {
 	/** The capacity of the stack */
 	private int capacity;
 	
-	public ArrayQueue() {
+	/**
+	 * Constructor for ArrayQueue.
+	 * @param capacity of the collection
+	 */
+	public ArrayQueue(int capacity) {
 		arrList = new ArrayList<E>();
 		setCapacity(capacity);
 		size = 0;
@@ -35,7 +42,8 @@ public class ArrayQueue<E> {
 		if (size == capacity) {
 			throw new IllegalArgumentException("");
 		}
-		
+		arrList.add(0, element);
+		size++;
 	}
 	
 	/**
@@ -44,9 +52,34 @@ public class ArrayQueue<E> {
 	 * @param capacity the new capacity for the stack
 	 * @throws IllegalArgumentException if the parameter is invalid
 	 */
-	// i feel like we should have @Override here but it doesn't like it //
+	@Override
 	public void setCapacity(int capacity) throws IllegalArgumentException {
-		
+		if (capacity <= 0 || capacity < size) {
+			throw new IllegalArgumentException("Invalid capacity.");
+		}
+		this.capacity = capacity;
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public E dequeue() throws NoSuchElementException {
+		if(arrList.size() == 0) {
+			throw new NoSuchElementException();
+		}
+		size--;
+		return arrList.remove(0);
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return size == 0;
+	}
+
+	@Override
+	public int size() {
+		return size;
 	}
 	
 }
