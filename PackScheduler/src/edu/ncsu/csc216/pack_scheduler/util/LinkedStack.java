@@ -39,10 +39,6 @@ public class LinkedStack<E> implements Stack<E> {
 		}
 		stackList.add(element);
 		size++;
-<<<<<<< HEAD
-=======
-		
->>>>>>> branch 'main' of git@github.ncsu.edu:engr-csc216-fall2022/csc217-LR3-214-02.git
 	}
 
 	@Override
