@@ -37,10 +37,9 @@ public class CourseRoll {
 	 * @param c the course object
 	 */
 	public CourseRoll(Course c, int enrollmentCap) {
-		if(c == null) {
-			System.out.println("THIS IS IT?");
-			throw new IllegalArgumentException();
-		}
+//		if(c == null) {
+//			throw new IllegalArgumentException();
+//		}
 		setEnrollmentCap(enrollmentCap);
 		roll = new LinkedAbstractList<Student>(enrollmentCap);
 		waitlist = new LinkedAbstractList<Student>(WAITLIST_SIZE);
