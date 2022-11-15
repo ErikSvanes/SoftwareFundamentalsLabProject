@@ -45,11 +45,6 @@ class ArrayStackTest<E> {
 	}
 	
 	@Test 
-	void testSize() {
-		//Tested in another method.
-	}
-	
-	@Test 
 	void testSetCapacity() {
 		ArrayStack<Course> as = new ArrayStack<Course>(5);
 		assertDoesNotThrow(() -> as.setCapacity(1));

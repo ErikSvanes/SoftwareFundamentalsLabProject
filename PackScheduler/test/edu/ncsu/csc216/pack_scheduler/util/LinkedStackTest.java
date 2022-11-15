@@ -45,11 +45,6 @@ class LinkedStackTest<E> {
 	}
 	
 	@Test 
-	void testSize() {
-		//Tested in another method.
-	}
-	
-	@Test 
 	void testSetCapacity() {
 		LinkedStack<Course> as = new LinkedStack<Course>(5);
 		assertDoesNotThrow(() -> as.setCapacity(1));

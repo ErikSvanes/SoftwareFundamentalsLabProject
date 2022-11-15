@@ -21,8 +21,6 @@ public class CourseRollTest {
 	@Test 
 	void testCourseRoll() {
 		Course c = new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", 10, "A");
-		//CourseRoll roll = new CourseRoll(10); //Update as below
-		CourseRoll roll = c.getCourseRoll();
 		CourseRoll cr = new CourseRoll(c, 200);
 		assertEquals(200, cr.getEnrollmentCap());
 		assertEquals(200, cr.getOpenSeats());
@@ -34,8 +32,6 @@ public class CourseRollTest {
 	@Test 
 	void testSetEnrollmentCap() {
 		Course c = new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", 10, "A");
-		//CourseRoll roll = new CourseRoll(10); //Update as below
-		CourseRoll roll = c.getCourseRoll();
 		assertThrows(IllegalArgumentException.class, () -> new CourseRoll(c, 251));
 		assertThrows(IllegalArgumentException.class, () -> new CourseRoll(c, 5));
 	}
@@ -47,8 +43,6 @@ public class CourseRollTest {
 	@Test 
 	void testEnroll() {
 		Course c = new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", 10, "A");
-		//CourseRoll roll = new CourseRoll(10); //Update as below
-		CourseRoll roll = c.getCourseRoll();
 		CourseRoll cr = new CourseRoll(c, 200);
 		cr.enroll(new Student("First", "Last", "fmlast", "fmlast@ncsu.edu", "password"));
 		assertEquals(199, cr.getOpenSeats());
@@ -61,8 +55,6 @@ public class CourseRollTest {
 	@Test 
 	void testDrop() {
 		Course c = new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", 10, "A");
-		//CourseRoll roll = new CourseRoll(10); //Update as below
-		CourseRoll roll = c.getCourseRoll();
 		Student s = new Student("First", "Last", "fmlast", "fmlast@ncsu.edu", "password");
 		CourseRoll cr = new CourseRoll(c, 200);
 		cr.enroll(s);
@@ -78,8 +70,6 @@ public class CourseRollTest {
 	@Test 
 	void testCanEnroll() {
 		Course c = new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", 10, "A");
-		//CourseRoll roll = new CourseRoll(10); //Update as below
-		CourseRoll roll = c.getCourseRoll();
 		Student s = new Student("First", "Last", "fmlast", "fmlast@ncsu.edu", "password");
 		CourseRoll cr = new CourseRoll(c, 11);
 		assertTrue(cr.canEnroll(s));
