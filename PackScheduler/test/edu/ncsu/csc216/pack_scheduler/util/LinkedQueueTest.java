@@ -7,6 +7,7 @@ import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.NoSuchElementException;
@@ -29,7 +30,7 @@ public class LinkedQueueTest<E> {
 	@Test
 	public void testLinkedQueue() {
 		LinkedQueue<E> as = new LinkedQueue<E>(5);
-		assertTrue(as.size() == 0);
+		assertSame(as.size(), 0);
 	}
 	
 	/**
@@ -40,7 +41,7 @@ public class LinkedQueueTest<E> {
 		LinkedQueue<Course> as = new LinkedQueue<Course>(5);
 		assertThrows(IllegalArgumentException.class, () -> as.enqueue(null));
 		as.enqueue(new Course("CSC216", "Software Development Fundamentals", "001", 3, "sesmith5", 100, "MW", 1330, 1445));
-		assertTrue(as.size() == 1);
+		assertSame(as.size(), 1);
 		as.setCapacity(1);
 		assertThrows(IllegalArgumentException.class, () -> as.enqueue(new Course("CSC217", "Software Development Fundamentals Lab", "001", 3, "sesmith5", 100, "TH", 1330, 1445)));
 		

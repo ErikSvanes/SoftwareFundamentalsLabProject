@@ -3,11 +3,7 @@
  */
 package edu.ncsu.csc216.pack_scheduler.util;
 
-import static org.junit.Assert.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.NoSuchElementException;
 
@@ -29,7 +25,7 @@ public class ArrayQueueTest<E> {
 	@Test
 	public void testArrayQueue() {
 		ArrayQueue<E> as = new ArrayQueue<E>(5);
-		assertTrue(as.size() == 0);
+		assertSame(as.size(), 0);
 	}
 	
 	/**
@@ -40,7 +36,7 @@ public class ArrayQueueTest<E> {
 		ArrayQueue<Course> as = new ArrayQueue<Course>(5);
 		assertThrows(IllegalArgumentException.class, () -> as.enqueue(null));
 		as.enqueue(new Course("CSC216", "Software Development Fundamentals", "001", 3, "sesmith5", 100, "MW", 1330, 1445));
-		assertTrue(as.size() == 1);
+		assertSame(as.size(), 1);
 		as.setCapacity(1);
 		assertThrows(IllegalArgumentException.class, () -> as.enqueue(new Course("CSC217", "Software Development Fundamentals Lab", "001", 3, "sesmith5", 100, "TH", 1330, 1445)));
 		
