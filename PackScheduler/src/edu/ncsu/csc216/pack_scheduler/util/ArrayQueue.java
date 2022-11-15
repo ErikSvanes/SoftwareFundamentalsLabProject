@@ -30,11 +30,7 @@ public class ArrayQueue<E> implements Queue<E> {
 		size = 0;
 	}
 	
-	/**
-	 * Method that adds elements to the back of the queue
-	 * 
-	 * @param element the element to add to the back of the queue
-	 */
+	@Override
 	public void enqueue(E element) throws IllegalArgumentException {
 		if (element == null) {
 			throw new IllegalArgumentException("Invalid element.");
@@ -42,7 +38,7 @@ public class ArrayQueue<E> implements Queue<E> {
 		if (size == capacity) {
 			throw new IllegalArgumentException("");
 		}
-		arrList.add(element);
+		arrList.add(0, element);
 		size++;
 	}
 	
@@ -60,7 +56,7 @@ public class ArrayQueue<E> implements Queue<E> {
 			throw new NoSuchElementException();
 		}
 		size--;
-		return arrList.remove(0);
+		return arrList.remove(size);
 	}
 
 	@Override

@@ -124,14 +124,13 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 			size--;
 			return returnValue;
 		}
-
 		ListNode current = front;
 		for (int i = 0; i < idx - 1; i++) {
 			current = current.next;
 		}
 		ListNode returnValue = current.next;
 		current.next = current.next.next;
-		//update back if removing the last element
+		// update back if removing the last element
 		if (idx == size - 1) {
 			back = current;
 		}

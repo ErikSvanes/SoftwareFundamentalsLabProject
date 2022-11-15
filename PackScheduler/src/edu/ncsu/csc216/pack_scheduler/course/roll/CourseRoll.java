@@ -71,6 +71,7 @@ public class CourseRoll {
 	 * student can be enrolled
 	 * 
 	 * @param s the student to be enrolled
+	 * @throws IllegalArgumentException if s is null, already enrolled, or if the waitlist is full.
 	 */
 	public void enroll(Student s) {
 		if (s == null) {
@@ -84,7 +85,7 @@ public class CourseRoll {
 		if (canEnroll(s)) {
 			try {
 				roll.add(s);
-			} catch (IllegalArgumentException AIE) {
+			} catch (IllegalArgumentException IAE) {
 				waitlist.add(s);
 			}
 		}
@@ -96,8 +97,14 @@ public class CourseRoll {
 	/**
 	 * Method that removes the student from the parameter if the student is in the
 	 * course
+	 * If the Student is in the main roll, remove the Student and add the first eligible Student 
+	 * in the waitlist to the main roll.
+	 * If the Student is in the waitlist, remove the Student from the waitlist while maintaining 
+	 * the order of the waitlist and working with the specialized data structure methods.
 	 * 
 	 * @param s the student to remove
+	 * @throws IllegalArgumentException if s is null or if there is otherwise 
+	 * an issue with dropping the course, such as the student is not on the CourseRoll.
 	 */
 	public void drop(Student s) {
 		if (s == null) {
