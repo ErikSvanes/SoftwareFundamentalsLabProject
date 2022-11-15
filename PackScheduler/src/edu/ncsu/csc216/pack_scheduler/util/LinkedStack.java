@@ -37,7 +37,7 @@ public class LinkedStack<E> implements Stack<E> {
 		if (size == capacity) {
 			throw new IllegalArgumentException();
 		}
-		stackList.add(element);
+		stackList.add(0, element);
 		size++;
 	}
 
@@ -47,7 +47,7 @@ public class LinkedStack<E> implements Stack<E> {
 			throw new EmptyStackException();
 		}
 		size--;
-		return stackList.remove(size);
+		return stackList.remove(0);
 	}
 
 	@Override
