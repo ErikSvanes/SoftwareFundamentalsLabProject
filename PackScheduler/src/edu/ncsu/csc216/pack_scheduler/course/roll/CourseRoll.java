@@ -27,7 +27,7 @@ public class CourseRoll {
 	/** The enrollment cap for the course */
 	private int enrollmentCap;
 	/** The waitlist for the course**/
-	private int waitlist;
+	private LinkedAbstractList<Student> waitlist;
 
 	/**
 	 * The constructor for the course roll, which first sets the enrollment cap and
@@ -36,12 +36,13 @@ public class CourseRoll {
 	 * @param enrollmentCap the new enrollment cap
 	 * @param c the course object
 	 */
-	public CourseRoll(int enrollmentCap, Course c) {
+	public CourseRoll(Course c, int enrollmentCap) {
 		if(c == null) {
 			throw new IllegalArgumentException();
 		}
 		setEnrollmentCap(enrollmentCap);
 		roll = new LinkedAbstractList<Student>(enrollmentCap);
+		waitlist = new LinkedAbstractList<Student>(WAITLIST_SIZE);
 	}
 
 	/**
@@ -72,15 +73,24 @@ public class CourseRoll {
 	 * @param s the student to be enrolled
 	 */
 	public void enroll(Student s) {
-		if (s == null || !canEnroll(s)) {
+		if (s == null) {
 			throw new IllegalArgumentException("Invalid student.");
 		}
-		try {
-			roll.add(s);
-		} catch (Exception e) {
-			throw new IllegalArgumentException();
+		for (int i = 0; i < roll.size(); i++) {
+			if (roll.get(i).equals(s)) {
+				throw new IllegalArgumentException("Duplcate student.");
+			}
 		}
-
+		if (canEnroll(s)) {
+			try {
+				roll.add(s);
+			} catch (IllegalArgumentException AIE) {
+				waitlist.add(s);
+			}
+		}
+		if (enrollmentCap == roll.size() && waitlist.size() == WAITLIST_SIZE) {
+			throw new IllegalArgumentException("Cannot add student.");
+		}
 	}
 
 	/**
@@ -93,16 +103,26 @@ public class CourseRoll {
 		if (s == null) {
 			throw new IllegalArgumentException();
 		}
+		boolean removed = false;
 		try {
 			for (int i = 0; i < roll.size(); i++) {
 				if (roll.get(i).equals(s)) {
 					roll.remove(i);
+					removed = true;
+					break;
+				}
+				if (waitlist.get(i).equals(s)) {
+					waitlist.remove(i);
 					return;
 				}
 			}
 		} catch (Exception e) {
 			throw new IllegalArgumentException();
 		}
+		if (removed && waitlist.size() != 0 && canEnroll(waitlist.get(0))) {
+			roll.add(waitlist.remove(0));
+		}
+		
 	}
 
 	/**
@@ -113,12 +133,19 @@ public class CourseRoll {
 	 * @return true or false whether the student is able to enroll in the course
 	 */
 	public boolean canEnroll(Student s) {
+		boolean foundWaitlist = false;
 		for (int i = 0; i < roll.size(); i++) {
 			if (roll.get(i).equals(s)) {
 				return false;
 			}
+			if (waitlist.size() > i && waitlist.get(i).equals(s)) {
+				foundWaitlist = true;
+			}
 		}
-		return !(enrollmentCap == roll.size());
+		if (roll.size() < enrollmentCap) {
+			return true;
+		}
+		return !foundWaitlist;
 	}
 
 	/**
@@ -137,6 +164,15 @@ public class CourseRoll {
 	 */
 	public int getEnrollmentCap() {
 		return enrollmentCap;
+	}
+	
+	/**
+	 * Returns the size of the wait list
+	 * 
+	 * @return the size of the wait list
+	 */
+	public int getNumberOnWaitlist() {
+		return waitlist.size();
 	}
 
 }
