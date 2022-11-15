@@ -13,7 +13,7 @@ class ArrayStackTest<E> {
 	@Test
 	void testArrayStack() {
 		ArrayStack<E> as = new ArrayStack<E>(5);
-		assertSame(as.size(), 0);
+		assertEquals(as.size(), 0);
 	}
 
 	@Test 
@@ -21,7 +21,7 @@ class ArrayStackTest<E> {
 		ArrayStack<Course> as = new ArrayStack<Course>(5);
 		assertThrows(IllegalArgumentException.class, () -> as.push(null));
 		as.push(new Course("CSC216", "Software Development Fundamentals", "001", 3, "sesmith5", 100, "MW", 1330, 1445));
-		assertSame(as.size(), 1);
+		assertEquals(as.size(), 1);
 		as.setCapacity(1);
 		assertThrows(IllegalArgumentException.class, () -> as.push(new Course("CSC217", "Software Development Fundamentals Lab", "001", 3, "sesmith5", 100, "TH", 1330, 1445)));
 		
