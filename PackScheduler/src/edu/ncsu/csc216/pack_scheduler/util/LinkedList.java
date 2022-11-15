@@ -109,11 +109,11 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			if (next.next.data == null) {
 				throw new NoSuchElementException();
 			}
-			previous = previous.next;
-			next = next.next;
+			lastRetrieved = previous;
+			previous = next;
+			next = previous.next;
 			previousIndex++;
 			nextIndex++;
-			lastRetrieved = previous;
 			return next.data;
 		}
 		@Override
