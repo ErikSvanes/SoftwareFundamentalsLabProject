@@ -6,6 +6,9 @@ import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Iterator;
+import java.util.ListIterator;
+
 import org.junit.jupiter.api.Test;
 
 class LinkedListTest {
@@ -15,7 +18,7 @@ class LinkedListTest {
 	 */
 	@Test
 	public void testConstructor() {
-		ArrayList<String> list = new ArrayList<String>();
+		LinkedList<String> list = new LinkedList<String>();
 		assertEquals(0, list.size());
 	}
 	/**
@@ -23,24 +26,21 @@ class LinkedListTest {
 	 */
 	@Test
 	public void testAdd() {
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 4);
-		list.add(3, 5);
-		list.add(2, 3);
-		assertSame(list.get(0), 1);
-		assertSame(list.get(1), 2);
-		assertSame(list.get(2), 3);
-		assertSame(list.get(3), 4);
-		assertSame(list.get(4), 5);
+		LinkedList<String> list = new LinkedList<String>();
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		list.add("d");
+		list.add("e");
+		ListIterator interator = list.listIterator(2);
+		assertTrue(interator.hasNext());
 	}
 	/**
 	 * Tests the ArrayList grow method
 	 */
 	@Test 
 	public void testGrowArray() {
-		ArrayList<Integer> list = new ArrayList<Integer>();
+		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.add(1);
 		list.add(2);
 		list.add(3);
@@ -62,7 +62,7 @@ class LinkedListTest {
 	 */
 	@Test 
 	public void testRemove() {
-		ArrayList<Integer> list = new ArrayList<Integer>();
+		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.add(1);
 		list.add(2);
 		list.add(3);
@@ -79,7 +79,7 @@ class LinkedListTest {
 	 */
 	@Test
 	public void testSet() {
-		ArrayList<Integer> list = new ArrayList<Integer>();
+		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.add(1);
 		list.add(2);
 		list.add(3);
