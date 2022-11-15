@@ -18,7 +18,7 @@ public interface Queue<E> {
 	 * Method that adds elements to the back of the queue
 	 * 
 	 * @param element the element to add to the queue
-	 * @throws IllegalArgumentExcpetion if there is no more room in the queue
+	 * @throws IllegalArgumentException if there is no more room in the queue
 	 */
 	void enqueue(E element) throws IllegalArgumentException;
 	
