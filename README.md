@@ -1,6 +1,6 @@
 # csc217-LR3-214-02
 
-#Lab 10
+# Lab 10
 
 | Task | Owner | Due Date | Status |
 | - | - | - | - |
@@ -12,7 +12,7 @@
 | Testing | ??| 11/20/22 | Pending |
 | Deployment | ?? | 11/20/22 | Pending | 
 
-#Lab 9
+# Lab 9
 
 | Task | Owner | Due Date | Status |
 | - | - | - | - |
