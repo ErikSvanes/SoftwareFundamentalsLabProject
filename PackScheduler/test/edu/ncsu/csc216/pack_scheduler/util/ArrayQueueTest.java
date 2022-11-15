@@ -61,7 +61,9 @@ public class ArrayQueueTest<E> {
 		ArrayQueue<Course> as = new ArrayQueue<Course>(5);
 		assertThrows(NoSuchElementException.class, () -> as.dequeue());
 		Course c = new Course("CSC216", "Software Development Fundamentals", "001", 3, "sesmith5", 100, "MW", 1330, 1445);
+		Course o = new Course("CSC217", "Software Development Fundamentals Lab", "001", 3, "sesmith5", 100, "TH", 1330, 1445);
 		as.enqueue(c);
+		as.enqueue(o);
 		assertEquals(as.dequeue(), c);
 	}
 	

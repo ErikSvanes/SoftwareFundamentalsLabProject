@@ -42,7 +42,7 @@ public class ArrayQueue<E> implements Queue<E> {
 		if (size == capacity) {
 			throw new IllegalArgumentException("");
 		}
-		arrList.add(0, element);
+		arrList.add(element);
 		size++;
 	}
 	

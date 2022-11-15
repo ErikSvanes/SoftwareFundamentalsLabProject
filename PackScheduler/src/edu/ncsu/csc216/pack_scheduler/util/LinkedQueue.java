@@ -38,7 +38,7 @@ public class LinkedQueue<E> implements Queue<E> {
 		if (size == capacity) {
 			throw new IllegalArgumentException("");
 		}
-		queueList.add(size, element);
+		queueList.add(0, element);
 		size++;
 		
 	}
