@@ -38,7 +38,7 @@ public class CourseRoll {
 	 */
 	public CourseRoll(Course c, int enrollmentCap) {
 		if(c == null) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("THIS IS WHY");
 		}
 		setEnrollmentCap(enrollmentCap);
 		roll = new LinkedAbstractList<Student>(enrollmentCap);
