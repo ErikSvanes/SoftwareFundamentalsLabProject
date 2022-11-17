@@ -36,7 +36,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 
 	@Override
 	public void add(int index, E element) {
-		if (super.contains(element)) {
+		if (contains(element)) {
 			throw new IllegalArgumentException();
 		}
 		super.add(index, element);
@@ -91,9 +91,10 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 				throw new IndexOutOfBoundsException();
 			}
 			previous = front;
-			for (int i = 0; i < index - 1; i++) {
-				previous = previous.next;
-				next = next.next;
+			next = front.next;
+			for (int i = 0; i < index; i++) {
+				previous = next;
+				next = previous.next;
 			}
 			previousIndex = index - 1;
 			nextIndex = index;
@@ -109,12 +110,12 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			if (next.next.data == null) {
 				throw new NoSuchElementException();
 			}
-			lastRetrieved = previous;
+			lastRetrieved = next;
 			previous = next;
 			next = previous.next;
 			previousIndex++;
 			nextIndex++;
-			return next.data;
+			return previous.data;
 		}
 		@Override
 		public boolean hasPrevious() {
@@ -153,13 +154,16 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			
 		}
 		@Override
-		public void add(E e) {
+		public void add(E e) { // this is correct
 			if (e == null) {
 				throw new NullPointerException();
 			}
 			ListNode newElement = new ListNode(e, previous, next);
-			previous.next = newElement;
 			next.prev = newElement;
+			previous.next = newElement;
+			previous = newElement;
+			previousIndex++;
+			nextIndex++;
 			size++;
 			lastRetrieved = null;
 		}
