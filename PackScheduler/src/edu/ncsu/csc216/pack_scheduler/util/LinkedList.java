@@ -85,6 +85,8 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 		}
 		return super.set(index, element);
 	}
+	
+	
 
 	private class ListNode {
 		/** The data for this list node */
@@ -194,8 +196,11 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 		}
 		@Override
 		public void remove() {
-			// TODO Auto-generated method stub
-			
+			if (lastRetrieved == null) {
+				throw new IllegalStateException();
+			}
+			lastRetrieved.prev = lastRetrieved.next;
+			size--;
 		}
 		@Override
 		public void set(E e) {
@@ -236,6 +241,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 //			size++;
 //			lastRetrieved = null;
 //		}
+		
 		
 	}
 }

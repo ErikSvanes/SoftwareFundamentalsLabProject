@@ -76,6 +76,10 @@ class LinkedListTest {
 		assertEquals(list.size(), 6);
 		assertTrue(list.remove(3).equals(4));
 		assertEquals(list.size(), 5);
+//		for(int i = 0; i< list.size(); i++) {
+//			System.out.println(list.get(i));
+//		}
+//		System.out.println(list.size());
 	}
 	
 	/**
