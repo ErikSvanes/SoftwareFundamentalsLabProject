@@ -25,12 +25,19 @@ class LinkedListTest {
 	public void testAdd() {
 		LinkedList<String> list = new LinkedList<String>();
 		list.add(0, "a");
-//		System.out.println(list.size());
 //		System.out.println(list.get(0));
 		list.add(1, "b");
+		System.out.println(list.get(0));
 		list.add(2, "c");
 		list.add(3, "d");
 		list.add(4, "e");
+		assertEquals("d", list.get(3));
+		list.add(3, "z");
+		assertEquals("z", list.get(3));
+		assertEquals("d", list.get(4));
+//		for (int i = 0; i < list.size(); i++) {
+//			System.out.println(list.get(i));
+//		}
 		ListIterator interator = list.listIterator(2);
 		assertTrue(interator.hasNext());
 	}
