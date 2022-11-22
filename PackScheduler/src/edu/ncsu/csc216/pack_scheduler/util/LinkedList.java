@@ -36,7 +36,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 
 	@Override
 	public void add(int index, E element) {
-		if (front == null) {
+		if (front.data == null) {
 			front = new ListNode(element);
 			back = new ListNode(element);
 			front.next = back;
@@ -94,7 +94,9 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 		 * @param data the data for this list node
 		 */
 		public ListNode(E data) {
-			
+			this.data = data;
+			this.prev = null;
+			this.next = null;
 		}
 		
 		/**
@@ -104,7 +106,9 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 		 * @param next the pointer to the next list node
 		 */
 		public ListNode(E data, ListNode prev, ListNode next) {
-			
+			this.data = data;
+			this.prev = prev;
+			this.next = next;
 		}
 	}
 	

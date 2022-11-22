@@ -28,6 +28,8 @@ class LinkedListTest {
 	public void testAdd() {
 		LinkedList<String> list = new LinkedList<String>();
 		list.add(0, "a");
+//		System.out.println(list.size());
+//		System.out.println(list.get(0));
 		list.add(1, "b");
 		list.add(2, "c");
 		list.add(3, "d");
@@ -86,7 +88,7 @@ class LinkedListTest {
 		list.add(4);
 		list.add(5);
 		list.add(6);
-		assertThrows(IllegalArgumentException.class,
+		assertThrows(NullPointerException.class,
 				() -> list.set(0, 2));
 		assertTrue(list.set(0, 7).equals(1));
 		assertTrue(list.get(0).equals(7));
