@@ -25,9 +25,7 @@ class LinkedListTest {
 	public void testAdd() {
 		LinkedList<String> list = new LinkedList<String>();
 		list.add(0, "a");
-//		System.out.println(list.get(0));
 		list.add(1, "b");
-		System.out.println(list.get(0));
 		list.add(2, "c");
 		list.add(3, "d");
 		list.add(4, "e");

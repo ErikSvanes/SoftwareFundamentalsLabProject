@@ -133,6 +133,14 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			if (index < 0 || index > size) {
 				throw new IndexOutOfBoundsException();
 			}
+			if (index == 0) {
+				previous = null;
+				next = front;
+				previousIndex = -1;
+				nextIndex = 0;
+				lastRetrieved = null;
+				return;
+			}
 			previous = front;
 			next = front.next;
 			for (int i = 0; i < index - 1; i++) {
