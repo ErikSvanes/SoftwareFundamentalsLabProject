@@ -38,10 +38,8 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 	public void add(int index, E element) {
 		if (front.data == null) {
 			front = new ListNode(element);
-			back = new ListNode(element);
-			front.next = back;
+			back = front;
 			front.prev = null;
-			back.prev = front;
 			back.next = null;
 		}
 		else if (index == 0) {
@@ -59,11 +57,10 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 				current = current.next;
 			}
 			ListNode newNode = null;
-//			current.next = new ListNode(element, current, current.next);
 			if (index == size) {
 				newNode = new ListNode(element, current, null);
+				current.next = newNode;
 				back = newNode;
-				back.prev = current.next;
 			}
 			else {
 				newNode = new ListNode(element, current, current.next);
@@ -130,7 +127,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			}
 			previous = front;
 			next = front.next;
-			for (int i = 0; i < index; i++) {
+			for (int i = 0; i < index - 1; i++) {
 				previous = next;
 				next = previous.next;
 			}
@@ -145,7 +142,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 		}
 		@Override
 		public E next() {
-			if (next.next.data == null) {
+			if (next.data == null) {
 				throw new NoSuchElementException();
 			}
 			lastRetrieved = next;
