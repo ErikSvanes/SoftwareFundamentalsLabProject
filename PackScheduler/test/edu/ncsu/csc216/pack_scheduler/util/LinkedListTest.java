@@ -27,11 +27,11 @@ class LinkedListTest {
 	@Test
 	public void testAdd() {
 		LinkedList<String> list = new LinkedList<String>();
-		list.add("a");
-		list.add("b");
-		list.add("c");
-		list.add("d");
-		list.add("e");
+		list.add(0, "a");
+		list.add(1, "b");
+		list.add(2, "c");
+		list.add(3, "d");
+		list.add(4, "e");
 		ListIterator interator = list.listIterator(2);
 		assertTrue(interator.hasNext());
 	}

@@ -36,10 +36,44 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 
 	@Override
 	public void add(int index, E element) {
-		if (contains(element)) {
-			throw new IllegalArgumentException();
+		if (front == null) {
+			front = new ListNode(element);
+			back = new ListNode(element);
+			front.next = back;
+			front.prev = null;
+			back.prev = front;
+			back.next = null;
 		}
-		super.add(index, element);
+		else if (index == 0) {
+			if (contains(element)) {
+				throw new IllegalArgumentException();
+			}
+			front = new ListNode(element, null, front);
+		}
+		else {
+			if (contains(element)) {
+				throw new IllegalArgumentException();
+			}
+			ListNode current = front;
+			for (int i = 0; i < index - 1; i++) {
+				current = current.next;
+			}
+			ListNode newNode = null;
+//			current.next = new ListNode(element, current, current.next);
+			if (index == size) {
+				newNode = new ListNode(element, current, null);
+				back = newNode;
+				back.prev = current.next;
+			}
+			else {
+				newNode = new ListNode(element, current, current.next);
+				current.next = newNode;
+				if (index == size - 1) {
+					back.prev = newNode;
+				}
+			}
+		}
+		size++;
 	}
 	
 	@Override
@@ -103,7 +137,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 		
 		@Override
 		public boolean hasNext() {
-			return next.data != null;
+			return next != null;
 		}
 		@Override
 		public E next() {
@@ -159,14 +193,29 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 				throw new NullPointerException();
 			}
 			ListNode newElement = new ListNode(e, previous, next);
-			next.prev = newElement;
-			previous.next = newElement;
-			previous = newElement;
+//			next.prev = newElement;
+//			previous.next = newElement;
+//			previous = newElement;
 			previousIndex++;
 			nextIndex++;
 			size++;
 			lastRetrieved = null;
 		}
+
+//		@Override
+//		public void add(E e) { // this is correct
+//			if (e == null) {
+//				throw new NullPointerException();
+//			}
+//			ListNode newElement = new ListNode(e, previous, next);
+//			next.prev = newElement;
+//			previous.next = newElement;
+//			previous = newElement;
+//			previousIndex++;
+//			nextIndex++;
+//			size++;
+//			lastRetrieved = null;
+//		}
 		
 	}
 }
