@@ -84,6 +84,8 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 		}
 		return super.set(index, element);
 	}
+	
+	
 
 	private class ListNode {
 		/** The data for this list node */
@@ -213,6 +215,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			} else {
 				lastRetrieved.prev.next = lastRetrieved.next;
 			}
+			lastRetrieved.prev = lastRetrieved.next;
 			size--;
 		}
 
@@ -256,6 +259,5 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 //			size++;
 //			lastRetrieved = null;
 //		}
-
 	}
 }
