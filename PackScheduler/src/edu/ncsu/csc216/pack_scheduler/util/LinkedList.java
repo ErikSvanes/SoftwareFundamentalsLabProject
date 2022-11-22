@@ -184,9 +184,12 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 		@Override
 		public void set(E e) {
 			if (lastRetrieved == null) {
-				throw new IllegalArgumentException();
+				throw new IllegalStateException();
 			}
-			
+			if(e == null) {
+				throw new NullPointerException();
+			}
+			lastRetrieved.data = e;
 		}
 		@Override
 		public void add(E e) { // this is correct

@@ -34,61 +34,61 @@ class LinkedListTest {
 		ListIterator interator = list.listIterator(2);
 		assertTrue(interator.hasNext());
 	}
-//	/**
-//	 * Tests the ArrayList grow method
-//	 */
-//	@Test 
-//	public void testGrowArray() {
-//		LinkedList<Integer> list = new LinkedList<Integer>();
-//		list.add(1);
-//		list.add(2);
-//		list.add(3);
-//		list.add(4);
-//		list.add(5);
-//		list.add(6);
-//		list.add(7);
-//		list.add(8);
-//		list.add(9);
-//		list.add(10);
-//		list.add(11);
-//		list.add(12);
-//		
-//		assertEquals(list.size(), 12);
-//	}
-//	
-//	/**
-//	 * Tests the ArrayList remove method
-//	 */
-//	@Test 
-//	public void testRemove() {
-//		LinkedList<Integer> list = new LinkedList<Integer>();
-//		list.add(1);
-//		list.add(2);
-//		list.add(3);
-//		list.add(4);
-//		list.add(5);
-//		list.add(6);
-//		assertEquals(list.size(), 6);
-//		assertTrue(list.remove(3).equals(4));
-//		assertEquals(list.size(), 5);
-//	}
-//	
-//	/**
-//	 * Tests the ArrayList set method
-//	 */
-//	@Test
-//	public void testSet() {
-//		LinkedList<Integer> list = new LinkedList<Integer>();
-//		list.add(1);
-//		list.add(2);
-//		list.add(3);
-//		list.add(4);
-//		list.add(5);
-//		list.add(6);
-//		assertThrows(NullPointerException.class,
-//				() -> list.set(0, 2));
-//		assertTrue(list.set(0, 7).equals(1));
-//		assertTrue(list.get(0).equals(7));
-//	}
+	/**
+	 * Tests the ArrayList grow method
+	 */
+	@Test 
+	public void testGrowArray() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		list.add(5);
+		list.add(6);
+		list.add(7);
+		list.add(8);
+		list.add(9);
+		list.add(10);
+		list.add(11);
+		list.add(12);
+		
+		assertEquals(list.size(), 12);
+	}
+	
+	/**
+	 * Tests the ArrayList remove method
+	 */
+	@Test 
+	public void testRemove() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		list.add(5);
+		list.add(6);
+		assertEquals(list.size(), 6);
+		assertTrue(list.remove(3).equals(4));
+		assertEquals(list.size(), 5);
+	}
+	
+	/**
+	 * Tests the ArrayList set method
+	 */
+	@Test
+	public void testSet() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		list.add(5);
+		list.add(6);
+		assertThrows(IllegalArgumentException.class,
+				() -> list.set(0, 2));
+		assertTrue(list.set(0, 7).equals(1));
+		assertTrue(list.get(0).equals(7));
+	}
 
 }
