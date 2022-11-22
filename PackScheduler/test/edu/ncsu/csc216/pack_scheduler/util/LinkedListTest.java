@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Iterator;
 import java.util.ListIterator;
+import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.Test;
 
@@ -74,8 +75,19 @@ class LinkedListTest {
 		list.add(5);
 		list.add(6);
 		assertEquals(list.size(), 6);
-		assertTrue(list.remove(3).equals(4));
+		ListIterator<Integer> iterator = list.listIterator(0);
+		assertThrows(NoSuchElementException.class, () -> iterator.previous());
+		iterator.next();
+		iterator.remove();
 		assertEquals(list.size(), 5);
+		iterator.next();
+		iterator.next();
+		iterator.previous();
+		iterator.remove();
+		for(int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
+		assertEquals(list.size(), 4);
 	}
 	
 	/**
