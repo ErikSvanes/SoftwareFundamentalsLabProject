@@ -6,11 +6,11 @@
 | - | - | - | - |
 | Implement and Test Custom Linked List | Pair Programming | 11/15/22 | In Progress |
 | Implement and Test Faculty | Pair Programming | 11/15/22 | Pending | 
-| Implement and Test FacultyRecordIO | ?? | 11/16/22 | Pending | 
-| Implement and Test FacultyDirectory | ?? | 11/17/22 | Pending | 
-| Update ResistrationManager | ?? | 11/18/22 | Pending |
-| Testing | ??| 11/20/22 | Pending |
-| Deployment | ?? | 11/20/22 | Pending | 
+| Implement and Test FacultyRecordIO | Pair Programming | 11/25/22 | Pending | 
+| Implement and Test FacultyDirectory | Pair Programming | 11/25/22 | Pending | 
+| Update ResistrationManager | ?? | 11/25/22 | Pending |
+| Testing | ??| 11/27/22 | Pending |
+| Deployment | ?? | 11/28/22 | Pending | 
 
 # Lab 9
 
