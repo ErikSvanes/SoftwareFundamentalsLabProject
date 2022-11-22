@@ -77,6 +77,14 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 	public int size() {
 		return size;
 	}
+	
+	@Override
+	public E set(int index, E element) {
+		if(contains(element)) {
+			throw new IllegalArgumentException();
+		}
+		return super.set(index, element);
+	}
 
 	private class ListNode {
 		/** The data for this list node */
