@@ -57,4 +57,46 @@ public class Faculty extends User {
 		}
 		this.maxCourses = maxCourses;
 	}
+
+	/**
+	 * Determines the hash code of each max courses
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + maxCourses;
+		return result;
+	}
+
+    /**
+     * Checks to make sure that each faculty is only listed once
+     */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Faculty other = (Faculty) obj;
+		if (maxCourses != other.maxCourses)
+			return false;
+		return true;
+	}
+
+
+	/**
+	 * Returns a comma separated list of all Faculty fields as a string
+	 * 
+	 * @return String representation of Faculty
+	 */
+
+	@Override
+	public String toString() {
+		return getFirstName() + "," + getLastName() + "," + getId() + "," + getEmail() + "," + getPassword() + ","
+				+ maxCourses;
+	}
+	
 }
