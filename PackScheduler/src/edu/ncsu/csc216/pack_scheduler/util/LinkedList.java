@@ -35,41 +35,13 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 	public ListIterator<E> listIterator(int index) {
 		return new LinkedListIterator(index);
 	}
-
+	
 	@Override
 	public void add(int index, E element) {
-		if (front.data == null) {
-			front = new ListNode(element);
-			back = front;
-			front.prev = null;
-			back.next = null;
-		} else if (index == 0) {
-			if (contains(element)) {
-				throw new IllegalArgumentException();
-			}
-			front = new ListNode(element, null, front);
-		} else {
-			if (contains(element)) {
-				throw new IllegalArgumentException();
-			}
-			ListNode current = front;
-			for (int i = 0; i < index - 1; i++) {
-				current = current.next;
-			}
-			ListNode newNode = null;
-			if (index == size) {
-				newNode = new ListNode(element, current, null);
-				current.next = newNode;
-				back = newNode;
-			} else {
-				newNode = new ListNode(element, current, current.next);
-				current.next = newNode;
-				if (index == size - 1) {
-					back.prev = newNode;
-				}
-			}
+		if (contains(element)) {
+			throw new IllegalArgumentException();
 		}
-		size++;
+		super.add(index, element);
 	}
 
 	@Override
@@ -136,17 +108,9 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			if (index < 0 || index > size) {
 				throw new IndexOutOfBoundsException();
 			}
-			if (index == 0) {
-				previous = null;
-				next = front;
-				previousIndex = -1;
-				nextIndex = 0;
-				lastRetrieved = null;
-				return;
-			}
 			previous = front;
 			next = front.next;
-			for (int i = 0; i < index - 1; i++) {
+			for (int i = 0; i < index; i++) {
 				previous = next;
 				next = previous.next;
 			}
@@ -157,7 +121,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 
 		@Override
 		public boolean hasNext() {
-			return next != null;
+			return next.data != null;
 		}
 
 		@Override
@@ -180,13 +144,9 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 
 		@Override
 		public E previous() {
-			//not sure if it should be previous or previous' data.
-			if(previous == null) {
+			if (previous.data == null) {
 				throw new NoSuchElementException();
 			}
-//			if (previous.data == null) {
-//				throw new NoSuchElementException();
-//			}
 			previous = previous.prev;
 			next = next.prev;
 			previousIndex--;
@@ -232,32 +192,18 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 
 		@Override
 		public void add(E e) { // this is correct
+			ListNode current = front;
 			if (e == null) {
 				throw new NullPointerException();
 			}
 			ListNode newElement = new ListNode(e, previous, next);
-//			next.prev = newElement;
-//			previous.next = newElement;
-//			previous = newElement;
+			next.prev = newElement;
+			previous.next = newElement;
+			previous = newElement;
 			previousIndex++;
 			nextIndex++;
 			size++;
 			lastRetrieved = null;
 		}
-
-//		@Override
-//		public void add(E e) { // this is correct
-//			if (e == null) {
-//				throw new NullPointerException();
-//			}
-//			ListNode newElement = new ListNode(e, previous, next);
-//			next.prev = newElement;
-//			previous.next = newElement;
-//			previous = newElement;
-//			previousIndex++;
-//			nextIndex++;
-//			size++;
-//			lastRetrieved = null;
-//		}
 	}
 }

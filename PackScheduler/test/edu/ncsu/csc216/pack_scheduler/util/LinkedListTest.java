@@ -34,9 +34,9 @@ class LinkedListTest {
 		list.add(3, "z");
 		assertEquals("z", list.get(3));
 		assertEquals("d", list.get(4));
-//		for (int i = 0; i < list.size(); i++) {
-//			System.out.println(list.get(i));
-//		}
+		list.add(0, "l");
+		assertEquals("l", list.get(0));
+		assertEquals("a", list.get(1));
 		ListIterator interator = list.listIterator(2);
 		assertTrue(interator.hasNext());
 	}
