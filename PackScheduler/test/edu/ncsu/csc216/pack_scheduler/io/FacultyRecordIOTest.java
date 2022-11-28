@@ -60,7 +60,7 @@ class FacultyRecordIOTest {
 		faculty.add(new Faculty("Test2", "Faculty2", "unity2", "email@domain2.com", "password2", 2));
 		faculty.add(new Faculty("Test3", "Faculty3", "unity3", "email@domain3.com", "password3", 3));
 
-		assertDoesNotThrow(() -> FacultyRecordIO.writeFacultyRecords("test-files/actual_student_records.txt", faculty));
+		assertDoesNotThrow(() -> FacultyRecordIO.writeFacultyRecords("test-files/actual_faculty_records.txt", faculty));
 	}
 
 }
