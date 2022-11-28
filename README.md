@@ -4,8 +4,8 @@
 
 | Task | Owner | Due Date | Status |
 | - | - | - | - |
-| Implement and Test Custom Linked List | Pair Programming | 11/15/22 | In Progress |
-| Implement and Test Faculty | Drew | 11/12/22 | In Progress | 
+| Implement and Test Custom Linked List | Pair Programming | 11/15/22 | Complete |
+| Implement and Test Faculty | Drew | 11/12/22 | Complete | 
 | Implement and Test FacultyRecordIO | Devin | 11/22/22 | Pending | 
 | Implement and Test FacultyDirectory | Erik | 11/22/22 | Pending | 
 | Update ResistrationManager | Pair Programming | 11/25/22 | Pending |
