@@ -95,6 +95,7 @@ public class Schedule {
 	 * Sets the title value
 	 * 
 	 * @param title the title that is set
+	 * @throws IllegalArgumentException if title is null
 	 */
 	public void setTitle(String title) {
 		if (title == null) {
