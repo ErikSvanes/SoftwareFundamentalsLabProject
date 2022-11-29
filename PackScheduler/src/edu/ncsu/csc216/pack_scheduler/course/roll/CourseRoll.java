@@ -128,7 +128,7 @@ public class CourseRoll {
 				}
 			}
 		} catch (Exception e) {
-			throw new IllegalArgumentException(e.getMessage());
+			throw new IllegalArgumentException();
 		}
 		if (removed && waitlist.size() != 0 && canEnroll(waitlist.get(0))) {
 			roll.add(waitlist.remove(0));

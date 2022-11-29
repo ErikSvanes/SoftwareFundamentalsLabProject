@@ -99,7 +99,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	 */
 	public E get(int idx) {
 		if (idx < 0 || idx >= size) {
-			throw new IndexOutOfBoundsException("The problem is here");
+			throw new IndexOutOfBoundsException();
 		}
 		ListNode current = front;
 		for (int i = 0; i < idx; i++) {
@@ -116,7 +116,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	 */
 	public E remove(int idx) {
 		if (idx < 0 || idx >= size || front == null) {
-			throw new IndexOutOfBoundsException("There is a problem with the index ");
+			throw new IndexOutOfBoundsException();
 		}
 		if (idx == 0) {
 			E returnValue = front.data;
