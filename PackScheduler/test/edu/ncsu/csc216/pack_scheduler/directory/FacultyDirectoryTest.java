@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import edu.ncsu.csc216.pack_scheduler.user.Faculty;
 
 /**
+ * Test class for FacultyDirectory.
  * @author devinmowry
  *
  */

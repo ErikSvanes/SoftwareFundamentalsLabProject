@@ -3,7 +3,6 @@ package edu.ncsu.csc216.pack_scheduler.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
