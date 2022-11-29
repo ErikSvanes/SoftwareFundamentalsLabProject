@@ -13,6 +13,7 @@ import edu.ncsu.csc216.pack_scheduler.course.Course;
 import edu.ncsu.csc216.pack_scheduler.course.roll.CourseRoll;
 import edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory;
 import edu.ncsu.csc216.pack_scheduler.directory.StudentDirectory;
+import edu.ncsu.csc216.pack_scheduler.user.Faculty;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 import edu.ncsu.csc216.pack_scheduler.user.User;
 import edu.ncsu.csc216.pack_scheduler.user.schedule.Schedule;
@@ -128,6 +129,14 @@ public class RegistrationManager {
 				if(s != null){
 					if (s.getPassword().equals(localHashPW)) {
 						currentUser = s;
+						return true;
+					}
+					return false;
+				}
+				Faculty f = facultyDirectory.getFacultyById(id);
+				if(f != null){
+					if (f.getPassword().equals(localHashPW)) {
+						currentUser = f;
 						return true;
 					}
 					return false;
