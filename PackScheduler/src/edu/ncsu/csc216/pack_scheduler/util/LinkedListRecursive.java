@@ -50,8 +50,11 @@ public class LinkedListRecursive<E> {
 	 * @return true if the element is added
 	 */
 	public boolean add(E element) {
-		if (isEmpty() || contains(element)) {
+		if (contains(element)) {
 			throw new IllegalArgumentException();
+		}
+		if (isEmpty()) {
+			front = new ListNode(element, null);
 		}
 		size++;
 		return front.add(element);
@@ -66,29 +69,33 @@ public class LinkedListRecursive<E> {
 	public void add(int index, E element) {
 		if (index < 0 || index > size) {
 			throw new IndexOutOfBoundsException();
-		}
+		} 
 		else if (element == null) {
 			throw new NullPointerException();
-		}
-		else if (contains(element)) {
-			throw new IllegalArgumentException();
-		}
+		} 
 		else if (index == 0) {
 			front = new ListNode(element, front);
-		}
+		} 
+		else if (contains(element)) {
+			throw new IllegalArgumentException();
+		} 
 		else {
 			front.add(index, element);
 		}
+		size++;
 	}
 
 	/**
-	 * asdf
+	 * This method gets the data at the specified index from the list.
 	 * 
-	 * @param index asdf
-	 * @return asdf
+	 * @param index the index to retrieve the data from
+	 * @return the data at the specified index
 	 */
 	public E get(int index) {
-		return null;
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException();
+		}
+		return front.get(index);
 	}
 
 	/**
@@ -102,13 +109,21 @@ public class LinkedListRecursive<E> {
 	}
 
 	/**
-	 * asdf
+	 * This method removes the list node at the specified index from the list.
 	 * 
-	 * @param index asdf
-	 * @return asdf
+	 * @param index the index of the list node in the list to remove
+	 * @return the data of the list node that was removed
 	 */
 	public E remove(int index) {
-		return null;
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException();
+		}
+		else if (index == 0) {
+			E element = front.data;
+			front = front.next;
+			return element;
+		}
+		return front.remove(index);
 	}
 
 	/**
@@ -129,8 +144,11 @@ public class LinkedListRecursive<E> {
 	 * @return true or false whether the element is found in the list
 	 */
 	public boolean contains(E element) {
-		if (front == null) {
+		if (front == null && size != 0) {
 			throw new IllegalArgumentException();
+		}
+		else if (front == null) {
+			return false;
 		}
 		return front.contains(element);
 	}
@@ -188,7 +206,7 @@ public class LinkedListRecursive<E> {
 		 * This is the private helper method that is called recursively for the add
 		 * method at an index.
 		 * 
-		 * @param index the index to add the element to
+		 * @param index   the index to add the element to
 		 * @param element the element to add to the list
 		 */
 		public void add(int index, E element) {
@@ -197,6 +215,38 @@ public class LinkedListRecursive<E> {
 				return;
 			}
 			next.add(index - 1, element);
+		}
+
+		/**
+		 * This is the private helper method that is called recursively for the get
+		 * method at an index.
+		 * 
+		 * @param index the index to get the element
+		 * @return the element at the specified index
+		 */
+		public E get(int index) {
+			if (index == 0) {
+				return data;
+			}
+			next.get(index - 1);
+			return null;
+		}
+
+		/**
+		 * This is the private helper method that is called recursively for the remove
+		 * method at an index.
+		 * 
+		 * @param index the index of the node to remove from the list
+		 * @return the node that was removed
+		 */
+		public E remove(int index) {
+			if (index == 1) {
+				E element = next.data;
+				next = next.next;
+				return element;
+			}
+			next.remove(index - 1);
+			return null;
 		}
 	}
 }
