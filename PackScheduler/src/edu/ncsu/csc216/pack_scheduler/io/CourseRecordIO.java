@@ -118,7 +118,6 @@ public class CourseRecordIO {
 		  String[][] fdStr = fd.getFacultyDirectory();
 		  for(int i = 0; i < fdStr.length; i++) {
 			  if(fdStr[i][2].equals(instructorID)) {
-				  currentCourse.setInstructorId(instructorID);
 				  fd.getFacultyById(instructorID).getSchedule().addCourseToSchedule(currentCourse);
 			  }
 		  }
