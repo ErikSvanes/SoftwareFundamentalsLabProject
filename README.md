@@ -4,11 +4,11 @@
 
 | Task | Owner | Due Date | Status |
 | - | - | - | - |
-| Implement and Test LinkedListRecursive | Pair Programming | 11/29/22 | In Progress |
-| Implement and Test Faculty | Drew | 11/12/22 | Pending | 
-| Implement and Test FacultyRecordIO | Devin | 11/22/22 | Pending | 
-| Implement and Test FacultyDirectory | Devin | 11/22/22 | Pending | 
-| Update ResistrationManager | Erik | 11/25/22 | Pending |
+| Implement and Test LinkedListRecursive | Pair Programming/Erik | 11/29/22 | In Progress |
+| Implement and Test FacultySchedule | Pair Programming/Devin | 11/30/22 | In Progress | 
+| Update and Test Faculty | Devin | 11/30/22 | In Progress | 
+| Update and Test Course and CourseRecordIO | Devin | 11/30/22 | Pending | 
+| Update ResistrationManager | Drew | 11/25/22 | Pending |
 | Testing | Pair Programming | 11/27/22 | Pending |
 | Deployment | Erik | 11/28/22 | Pending | 
 
@@ -20,7 +20,7 @@
 | Implement and Test Faculty | Drew | 11/12/22 | Complete | 
 | Implement and Test FacultyRecordIO | Devin | 11/22/22 | Complete | 
 | Implement and Test FacultyDirectory | Devin | 11/22/22 | Complete | 
-| Update ResistrationManager | Erik | 11/25/22 | Complete |
+| Update ResistrationManager | Drew | 11/25/22 | Complete |
 | Testing | Pair Programming | 11/27/22 | Complete |
 | Deployment | Erik | 11/28/22 | Complete | 
 
