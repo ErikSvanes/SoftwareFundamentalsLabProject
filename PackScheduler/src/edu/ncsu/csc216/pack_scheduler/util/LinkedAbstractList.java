@@ -99,7 +99,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	 */
 	public E get(int idx) {
 		if (idx < 0 || idx >= size) {
-			throw new IndexOutOfBoundsException();
+			throw new IndexOutOfBoundsException("The problem is here");
 		}
 		ListNode current = front;
 		for (int i = 0; i < idx; i++) {

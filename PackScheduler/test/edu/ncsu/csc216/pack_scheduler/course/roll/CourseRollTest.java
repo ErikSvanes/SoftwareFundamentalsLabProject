@@ -112,4 +112,24 @@ public class CourseRollTest {
 		roll.drop(s11);
 		assertEquals(0, roll.getNumberOnWaitlist());
 	}
+	
+//	@Test
+//	void randomTest() {
+//		Course c = new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", 10, "A");
+//		CourseRoll cr = new CourseRoll(c, 10);
+//		Student s1 = new Student("a", "a", "a", "a@a.a", "pass");
+//		Student s2 = new Student("2", "a", "a", "a@a.a", "pass");
+//		Student s3 = new Student("3", "a", "a", "a@a.a", "pass");
+//		Student s4 = new Student("4", "a", "a", "a@a.a", "pass");
+//		Student s5 = new Student("5", "a", "a", "a@a.a", "pass");
+//		Student s6 = new Student("6", "a", "a", "a@a.a", "pass");
+//		Student s7 = new Student("7", "a", "a", "a@a.a", "pass");
+//		Student s8 = new Student("8", "a", "a", "a@a.a", "pass");
+//		Student s9 = new Student("9", "a", "a", "a@a.a", "pass");
+//		Student s10 = new Student("10", "a", "a", "a@a.a", "pass");
+//		Student s11 = new Student("11", "a", "a", "a@a.a", "pass");
+//		cr.enroll(s1);
+//		cr.enroll(s2);
+//		cr.drop();
+//	}
 }
