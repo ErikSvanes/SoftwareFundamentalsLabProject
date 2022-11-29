@@ -11,6 +11,7 @@ import java.util.Properties;
 import edu.ncsu.csc216.pack_scheduler.catalog.CourseCatalog;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
 import edu.ncsu.csc216.pack_scheduler.course.roll.CourseRoll;
+import edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory;
 import edu.ncsu.csc216.pack_scheduler.directory.StudentDirectory;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 import edu.ncsu.csc216.pack_scheduler.user.User;
@@ -32,6 +33,8 @@ public class RegistrationManager {
 	private User registrar;
 	/** RegistrationManager Current User*/
 	private User currentUser;
+	/** The Faculty Directory */
+	private FacultyDirectory facultyDirectory;
 	/** Hashing algorithm */
 	private static final String HASH_ALGORITHM = "SHA-256";
 	/** Prop file*/
@@ -41,6 +44,7 @@ public class RegistrationManager {
 		createRegistrar();
 		this.courseCatalog = new CourseCatalog();
 		this.studentDirectory = new StudentDirectory();
+		this.facultyDirectory = new FacultyDirectory();
 	}
 	
 	private void createRegistrar() {
@@ -92,6 +96,14 @@ public class RegistrationManager {
 	 */
 	public StudentDirectory getStudentDirectory() {
 		return studentDirectory;
+	}
+	
+	/**
+	 * Method to get the FacultyDirectory object.
+	 * @return facultyDirectory object
+	 */
+	public FacultyDirectory getFacultyDirectory() {
+		return facultyDirectory;
 	}
 
 	/**
