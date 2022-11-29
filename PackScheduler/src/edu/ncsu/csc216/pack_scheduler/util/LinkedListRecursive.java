@@ -141,7 +141,7 @@ public class LinkedListRecursive<E> {
 	 * parameter.
 	 * 
 	 * @param element the element to check for in the list
-	 * @return true or false whether the element is found in the list
+	 * @return true or false whether the element is found in the list 
 	 */
 	public boolean contains(E element) {
 		if (front == null && size != 0) {
