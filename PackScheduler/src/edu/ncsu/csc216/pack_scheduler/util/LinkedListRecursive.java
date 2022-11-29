@@ -53,7 +53,7 @@ public class LinkedListRecursive<E> {
 		if (contains(element)) {
 			throw new IllegalArgumentException();
 		}
-		if (isEmpty()) {
+		if(isEmpty()) {
 			front = new ListNode(element, null);
 		}
 		size++;
@@ -147,7 +147,7 @@ public class LinkedListRecursive<E> {
 		if (front == null && size != 0) {
 			throw new IllegalArgumentException();
 		}
-		else if (front == null) {
+		else if(front == null) {
 			return false;
 		}
 		return front.contains(element);
