@@ -192,7 +192,6 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 
 		@Override
 		public void add(E e) { // this is correct
-			ListNode current = front;
 			if (e == null) {
 				throw new NullPointerException();
 			}
