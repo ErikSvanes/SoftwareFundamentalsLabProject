@@ -8,6 +8,8 @@ import java.io.PrintStream;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
+import edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory;
+import edu.ncsu.csc216.pack_scheduler.manager.RegistrationManager;
 import edu.ncsu.csc217.collections.list.SortedList;
 
 /**
@@ -108,8 +110,18 @@ public class CourseRecordIO {
 			  lineScan.close();
 			  throw new IllegalArgumentException();
 		  }
-	      //return a newly constructed Course object
-		  Course currentCourse = new Course(name, title, section, credits, instructorID, enrollmentCap, meetingDays, startTime, endTime);
+	      //NEW: create Course object with null instructor
+		  Course currentCourse = new Course(name, title, section, credits, null, enrollmentCap, meetingDays, startTime, endTime);
+		  
+		  //NEW: see if there is a faculty member with the instructor id, if so, add Course to Faculty's faculty schedule.
+		  FacultyDirectory fd = RegistrationManager.getInstance().getFacultyDirectory();
+		  String[][] fdStr = fd.getFacultyDirectory();
+		  for(int i = 0; i < fdStr.length; i++) {
+			  if(fdStr[i][2].equals(instructorID)) {
+				  currentCourse.setInstructorId(instructorID);
+				  fd.getFacultyById(instructorID).getSchedule().addCourseToSchedule(currentCourse);
+			  }
+		  }
 		  
 		  // Closes the scanner.
 		  lineScan.close();

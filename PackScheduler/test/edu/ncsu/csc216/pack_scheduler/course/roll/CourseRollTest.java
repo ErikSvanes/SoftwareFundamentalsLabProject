@@ -111,6 +111,6 @@ public class CourseRollTest {
 		assertEquals("Duplcate student.", e.getMessage());
 		roll.drop(s1);
 		assertEquals(0, roll.getNumberOnWaitlist());
-		assertEquals(s10.getSchedule().getScheduledCourses()[0][0], "CSC216");
+		assertEquals(s11.getSchedule().getScheduledCourses()[0][0], "CSC216");
 	} 
 }

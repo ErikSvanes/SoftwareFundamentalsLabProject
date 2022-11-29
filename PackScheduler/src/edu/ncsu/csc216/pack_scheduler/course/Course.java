@@ -203,12 +203,12 @@ public class Course extends Activity implements Comparable<Course> {
 	 * course instructor ID to the string passed to the method
 	 * 
 	 * @param instructorId String with unity ID of the instructor
-	 * @throws IllegalArgumentException if passed string is empty or null.
+	 * @throws IllegalArgumentException if passed string is empty.
 	 */
 	public void setInstructorId(String instructorId) {
 
-		// Checking validation: Check for empty string and null. */
-		if (instructorId == null || "".equals(instructorId)) {
+		// Checking validation: Check for empty string. */
+		if ("".equals(instructorId)) {
 			throw new IllegalArgumentException("Invalid instructor id.");
 		}
 

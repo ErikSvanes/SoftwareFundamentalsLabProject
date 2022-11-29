@@ -279,7 +279,7 @@ public class CourseTest {
 		Course c = new Course(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, ENROLLMENT_CAP, MEETING_DAYS, START_TIME, END_TIME);
 
 		Exception exception = assertThrows(IllegalArgumentException.class,
-				() -> c.setInstructorId(invalid));
+				() -> c.setInstructorId(""));
 		assertEquals("Invalid instructor id.", exception.getMessage(), "Incorrect exception thrown with invalid input - " + invalid);
 	}
 

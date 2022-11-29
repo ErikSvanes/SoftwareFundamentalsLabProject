@@ -3,6 +3,8 @@
  */
 package edu.ncsu.csc216.pack_scheduler.user;
 
+import edu.ncsu.csc216.pack_scheduler.user.schedule.FacultySchedule;
+
 /**
  * Faculty class. Holds, sets, and retrieves information for a particular
  * Faculty. States include: firstName, lastName, ID, email, password,
@@ -18,6 +20,8 @@ public class Faculty extends User {
 	public static final int MAX_COURSES = 3;
 	/** Min Courses a faculty much teach **/
 	public static final int MIN_COURSES = 1;
+	/** Faculty schedule */
+	private FacultySchedule facultySchedule;
 	
 	/**
 	 * Student constructor that fills all the states
@@ -32,6 +36,7 @@ public class Faculty extends User {
 	public Faculty(String firstName, String lastName, String id, String email, String password, int maxCourses) {
 		super(firstName, lastName, id, email, password);
 		this.setMaxCourses(maxCourses);
+		this.facultySchedule = new FacultySchedule(id);
 	}
 	
 	
@@ -57,7 +62,23 @@ public class Faculty extends User {
 		}
 		this.maxCourses = maxCourses;
 	}
-
+	
+	/**
+	 * Method to get the FacultySchedule object for this faculty member.
+	 * @return faculty schedule of this faculty member.
+	 */
+	public FacultySchedule getSchedule() {
+		return facultySchedule;
+	}
+	
+	/**
+	 * Method to determine if Faculty has too many scheduled courses. 
+	 * @return true if the scheduled courses is greater than max courses.
+	 */
+	public boolean isOverloaded() {
+		return getSchedule().getNumScheduledCourses() > getMaxCourses();
+	}
+	
 	/**
 	 * Determines the hash code of each max courses
 	 */
