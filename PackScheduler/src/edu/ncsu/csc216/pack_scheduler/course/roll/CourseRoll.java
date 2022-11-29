@@ -124,7 +124,7 @@ public class CourseRoll {
 				}
 			}
 		} catch (Exception e) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("There was an exception when dropping the student.");
 		}
 		if (removed && waitlist.size() != 0 && canEnroll(waitlist.get(0))) {
 			roll.add(waitlist.remove(0));
