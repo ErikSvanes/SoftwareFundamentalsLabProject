@@ -152,7 +152,6 @@ public class LinkedListRecursive<E> {
 		}
 		return front.contains(element);
 	}
-
 	private class ListNode {
 		/** The data for the list node */
 		public E data;
