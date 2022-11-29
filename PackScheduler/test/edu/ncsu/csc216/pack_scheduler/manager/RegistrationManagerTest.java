@@ -142,12 +142,14 @@ public class RegistrationManagerTest {
 	@Test 
 	public void testGetFacultyDirectory() {
 		FacultyDirectory fd = new FacultyDirectory();
+		assertEquals(fd.getFacultyDirectory().length, 0);
 		
 		fd.addFaculty("first", "last", "fmlast", "fmlast@ncsu.edu", "password", "password", 2);
 		fd.addFaculty("first2", "last2", "fmlast2", "fmlast2@ncsu.edu", "password", "password", 2);
 		fd.addFaculty("first3", "last3", "fmlast3", "fmlast3@ncsu.edu", "password", "password", 2);
 		
 		String[][] facDir = fd.getFacultyDirectory();
+		assertEquals(fd.getFacultyDirectory().length, 3);
 		assertEquals(facDir[0][0], "first");
 		assertEquals(facDir[1][1], "last2");
 		assertEquals(facDir[2][2], "fmlast3");
@@ -214,6 +216,7 @@ public class RegistrationManagerTest {
 		assertTrue(manager.login("dmmowry", "password"));
 		assertEquals(manager.getCurrentUser().getId(), "dmmowry");
 	}
+
 	
 	/**
 	 * Tests RegistrationManager.enrollStudentInCourse()
