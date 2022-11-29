@@ -109,7 +109,8 @@ public class CourseRollTest {
 		Exception e = assertThrows(IllegalArgumentException.class,
 				() -> roll.enroll(s1));
 		assertEquals("Duplcate student.", e.getMessage());
-		roll.drop(s11);
+		roll.drop(s1);
 		assertEquals(0, roll.getNumberOnWaitlist());
-	}
+		assertEquals(s10.getSchedule().getScheduledCourses()[0][0], "CSC216");
+	} 
 }
