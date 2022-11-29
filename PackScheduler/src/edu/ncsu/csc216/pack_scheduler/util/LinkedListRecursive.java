@@ -53,7 +53,7 @@ public class LinkedListRecursive<E> {
 		if (contains(element)) {
 			throw new IllegalArgumentException();
 		}
-		if(isEmpty()) {
+		if (isEmpty()) {
 			front = new ListNode(element, null);
 		}
 		size++;
@@ -69,17 +69,13 @@ public class LinkedListRecursive<E> {
 	public void add(int index, E element) {
 		if (index < 0 || index > size) {
 			throw new IndexOutOfBoundsException();
-		} 
-		else if (element == null) {
+		} else if (element == null) {
 			throw new NullPointerException();
-		} 
-		else if (index == 0) {
+		} else if (index == 0) {
 			front = new ListNode(element, front);
-		} 
-		else if (contains(element)) {
+		} else if (contains(element)) {
 			throw new IllegalArgumentException();
-		} 
-		else {
+		} else {
 			front.add(index, element);
 		}
 		size++;
@@ -105,7 +101,17 @@ public class LinkedListRecursive<E> {
 	 * @return asdf
 	 */
 	public boolean remove(E element) {
-		return true;
+		if (element == null) {
+			throw new NullPointerException();
+		} else if (isEmpty()) {
+			throw new IllegalArgumentException();
+		} else if (front.data.equals(element)) {
+			front = front.next;
+			size--;
+			return true;
+		}
+		size--;
+		return front.remove(element);
 	}
 
 	/**
@@ -117,23 +123,28 @@ public class LinkedListRecursive<E> {
 	public E remove(int index) {
 		if (index < 0 || index >= size) {
 			throw new IndexOutOfBoundsException();
-		}
-		else if (index == 0) {
+		} else if (index == 0) {
 			E element = front.data;
 			front = front.next;
+			size--;
 			return element;
 		}
+		size--;
 		return front.remove(index);
 	}
 
 	/**
-	 * asdf
+	 * This method overwrites the data at a specific index to the specified element.
 	 * 
-	 * @param index   asdf
-	 * @param element asdf
+	 * @param index   the index to overwrite the data at
+	 * @param element the element to replace the data with
+	 * @return the previous data at the index
 	 */
-	public void set(int index, E element) {
-
+	public E set(int index, E element) {
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException();
+		}
+		return front.set(index, element);
 	}
 
 	/**
@@ -141,17 +152,17 @@ public class LinkedListRecursive<E> {
 	 * parameter.
 	 * 
 	 * @param element the element to check for in the list
-	 * @return true or false whether the element is found in the list 
+	 * @return true or false whether the element is found in the list
 	 */
 	public boolean contains(E element) {
 		if (front == null && size != 0) {
 			throw new IllegalArgumentException();
-		}
-		else if(front == null) {
+		} else if (front == null) {
 			return false;
 		}
 		return front.contains(element);
 	}
+
 	private class ListNode {
 		/** The data for the list node */
 		public E data;
@@ -245,6 +256,42 @@ public class LinkedListRecursive<E> {
 				return element;
 			}
 			next.remove(index - 1);
+			return null;
+		}
+
+		/**
+		 * This is the private helper method that is called recursively for the remove
+		 * method to remove a certain element from the list.
+		 * 
+		 * @param element the element to find and remove
+		 * @return true if it is removed, and false if it is not found
+		 */
+		public boolean remove(E element) {
+			if (next == null) {
+				return false;
+			} else if (next.data.equals(element)) {
+				next = next.next;
+				return true;
+			}
+			next.remove(element);
+			return false;
+		}
+
+		/**
+		 * This is the private helper method that is called recursively for the set
+		 * method to change the data of a node at a specified index.
+		 * 
+		 * @param index the index to change the data at
+		 * @param element the element to change the data to
+		 * @return the previous data at that element
+		 */
+		public E set(int index, E element) {
+			if (index == 0) {
+				E rtn = data;
+				data = element;
+				return rtn;
+			}
+			next.set(index - 1, element);
 			return null;
 		}
 	}
