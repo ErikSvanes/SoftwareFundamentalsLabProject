@@ -118,6 +118,8 @@ public class CourseRoll {
 					removed = true;
 					break;
 				}
+			}
+			for (int i = 0; i < waitlist.size(); i++) {
 				if (waitlist.get(i).equals(s)) {
 					waitlist.remove(i);
 					return;
