@@ -14,7 +14,7 @@ class LinkedListRecursiveTest {
 	 */
 	@Test
 	public void testConstructor() {
-		LinkedList<String> list = new LinkedList<String>();
+		LinkedListRecursive<String> list = new LinkedListRecursive<String>();
 		assertEquals(0, list.size());
 	}
 	/**
@@ -22,7 +22,7 @@ class LinkedListRecursiveTest {
 	 */
 	@Test
 	public void testAdd() {
-		LinkedList<String> list = new LinkedList<String>();
+		LinkedListRecursive<String> list = new LinkedListRecursive<String>();
 		list.add(0, "a");
 		list.add(1, "b");
 		list.add(2, "c");
@@ -35,15 +35,13 @@ class LinkedListRecursiveTest {
 		list.add(0, "l");
 		assertEquals("l", list.get(0));
 		assertEquals("a", list.get(1));
-		ListIterator interator = list.listIterator(2);
-		assertTrue(interator.hasNext());
 	}
 	/**
 	 * Tests the ArrayList grow method
 	 */
 	@Test 
 	public void testGrowArray() {
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		LinkedListRecursive<Integer> list = new LinkedListRecursive<Integer>();
 		list.add(1);
 		list.add(2);
 		list.add(3);
@@ -65,7 +63,7 @@ class LinkedListRecursiveTest {
 	 */
 	@Test 
 	public void testRemove() {
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		LinkedListRecursive<Integer> list = new LinkedListRecursive<Integer>();
 		list.add(1);
 		list.add(2);
 		list.add(3);
@@ -73,23 +71,11 @@ class LinkedListRecursiveTest {
 		list.add(5);
 		list.add(6);
 		assertEquals(list.size(), 6);
-		ListIterator<Integer> iterator = list.listIterator(0);
-		assertThrows(NoSuchElementException.class, () -> iterator.previous());
-		iterator.next();
-		iterator.remove();
+		assertEquals(list.remove(0), 1);
 		assertEquals(list.size(), 5);
-		iterator.next();
-		iterator.next();
-		iterator.previous();
-		iterator.remove();
 		for(int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}
-		assertEquals(list.size(), 4);
-//		for(int i = 0; i< list.size(); i++) {
-//			System.out.println(list.get(i));
-//		}
-//		System.out.println(list.size());
 	}
 	
 	/**
@@ -97,7 +83,7 @@ class LinkedListRecursiveTest {
 	 */
 	@Test
 	public void testSet() {
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		LinkedListRecursive<Integer> list = new LinkedListRecursive<Integer>();
 		list.add(1);
 		list.add(2);
 		list.add(3);

@@ -50,8 +50,11 @@ public class LinkedListRecursive<E> {
 	 * @return true if the element is added
 	 */
 	public boolean add(E element) {
-		if (isEmpty() || contains(element)) {
+		if (contains(element)) {
 			throw new IllegalArgumentException();
+		}
+		if(isEmpty()) {
+			front = new ListNode(element, null);
 		}
 		size++;
 		return front.add(element);
@@ -79,6 +82,7 @@ public class LinkedListRecursive<E> {
 		else {
 			front.add(index, element);
 		}
+		size++;
 	}
 
 	/**
@@ -129,8 +133,11 @@ public class LinkedListRecursive<E> {
 	 * @return true or false whether the element is found in the list
 	 */
 	public boolean contains(E element) {
-		if (front == null) {
+		if (front == null && size != 0) {
 			throw new IllegalArgumentException();
+		}
+		else if(front == null) {
+			return false;
 		}
 		return front.contains(element);
 	}
