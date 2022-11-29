@@ -7,7 +7,7 @@
 | Implement and Test Custom Linked List | Pair Programming | 11/15/22 | Complete |
 | Implement and Test Faculty | Drew | 11/12/22 | Complete | 
 | Implement and Test FacultyRecordIO | Devin | 11/22/22 | Complete | 
-| Implement and Test FacultyDirectory | Devin | 11/22/22 | Pending | 
+| Implement and Test FacultyDirectory | Devin | 11/22/22 | Complete | 
 | Update ResistrationManager | Erik | 11/25/22 | Pending |
 | Testing | Pair Programming | 11/27/22 | Pending |
 | Deployment | Erik | 11/28/22 | Pending | 
