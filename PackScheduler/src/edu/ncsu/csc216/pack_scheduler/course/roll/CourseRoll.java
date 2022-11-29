@@ -28,6 +28,8 @@ public class CourseRoll {
 	private int enrollmentCap;
 	/** The waitlist for the course**/
 	private LinkedAbstractList<Student> waitlist;
+	/** The course that this course roll is for */
+	private Course course;
 
 	/**
 	 * The constructor for the course roll, which first sets the enrollment cap and
@@ -43,6 +45,7 @@ public class CourseRoll {
 		setEnrollmentCap(enrollmentCap);
 		roll = new LinkedAbstractList<Student>(enrollmentCap);
 		waitlist = new LinkedAbstractList<Student>(WAITLIST_SIZE);
+		course = c;
 	}
 
 	/**
@@ -131,7 +134,9 @@ public class CourseRoll {
 			throw new IllegalArgumentException();
 		}
 		if (removed && waitlist.size() != 0 && canEnroll(waitlist.get(0))) {
-			roll.add(waitlist.remove(0));
+			Student student = waitlist.remove(0);
+			roll.add(student);
+			student.getSchedule().addCourseToSchedule(course);
 		}
 		
 	}
