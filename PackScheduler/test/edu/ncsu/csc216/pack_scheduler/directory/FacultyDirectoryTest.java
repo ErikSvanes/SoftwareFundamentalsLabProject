@@ -87,4 +87,6 @@ class FacultyDirectoryTest {
 		fd.addFaculty("first2", "last2", "fmlast2", "fmlast2@ncsu.edu", "password", "password", 2);
 		assertEquals(fd.getFacultyById("fmlast2").getId(), f.getId());
 	}
+	
+	
 }

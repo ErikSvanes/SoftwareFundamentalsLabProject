@@ -126,6 +126,7 @@ public class RegistrationManager {
 				}
 			} 
 				Student s = studentDirectory.getStudentById(id);
+				Faculty f = facultyDirectory.getFacultyById(id);
 				if(s != null){
 					if (s.getPassword().equals(localHashPW)) {
 						currentUser = s;
@@ -133,15 +134,15 @@ public class RegistrationManager {
 					}
 					return false;
 				}
-				Faculty f = facultyDirectory.getFacultyById(id);
-				if(f != null){
+				
+				else if(f != null){
 					if (f.getPassword().equals(localHashPW)) {
 						currentUser = f;
 						return true;
 					}
 					return false;
 				}
-	
+			
 			else {
 				throw new IllegalArgumentException("User doesn't exist.");
 			}

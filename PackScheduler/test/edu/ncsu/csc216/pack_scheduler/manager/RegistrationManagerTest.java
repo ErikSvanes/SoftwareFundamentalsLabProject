@@ -183,13 +183,18 @@ public class RegistrationManagerTest {
 	@Test
 	public void testLogout() {
 		StudentDirectory sd = manager.getStudentDirectory();
+		FacultyDirectory fd = manager.getFacultyDirectory();
 		
 		sd.addStudent("Davin", "Mawry", "dmmowry1", "dmmowry1@ncsu.edu", "password", "password", 15);
 		sd.addStudent("Divin", "Miwry", "dmmowry2", "dmmowry2@ncsu.edu", "password", "password", 16);
 		sd.addStudent("Devin", "Mowry", "dmmowry", "dmmowry@ncsu.edu", "password", "password", 14);
 		
+		fd.addFaculty("Devin2", "Mowry2", "dmmowry3", "dmmowry3@ncsu.edu", "password", "password", 2);
 		assertTrue(manager.login("dmmowry", "password"));
 		assertEquals(manager.getCurrentUser().getId(), "dmmowry");
+		manager.logout();
+		assertTrue(manager.login("dmmowry3", "password"));
+		assertEquals(manager.getCurrentUser().getId(), "dmmowry3");
 		manager.logout();
 		assertNull(manager.getCurrentUser());
 	}
