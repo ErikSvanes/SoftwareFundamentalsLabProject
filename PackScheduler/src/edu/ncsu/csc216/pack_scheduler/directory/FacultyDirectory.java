@@ -28,22 +28,23 @@ public class FacultyDirectory {
 	private static final String HASH_ALGORITHM = "SHA-256";
 
 	/**
-	 * 
+	 * FacultyDirectory constructor. Calls the method that creates a new FacultyDirectory object.
 	 */
 	public FacultyDirectory() {
 		newFacultyDirectory();
 	}
 
 	/**
-	 * 
+	 * Creates a new FacultyDirectory object.
 	 */
 	public void newFacultyDirectory() {
 		this.facultyDirectory = new LinkedList<Faculty>();
 	}
 
 	/**
-	 * 
-	 * @param fileName
+	 * Method to load Faculty from a file.
+	 * @param fileName of file to load data from 
+	 * @throws IllegalArgumentException if there is any problem reading the file.
 	 */
 	public void loadFacultyFromFile(String fileName) {
 		try {
@@ -54,14 +55,17 @@ public class FacultyDirectory {
 	}
 
 	/**
+	 * Method to add Faculty to the directory.
+	 * @param firstName first name of the Faculty member
+	 * @param lastName last name of the Faculty member
+	 * @param id id of the Faculty member
+	 * @param email email of the Faculty member
+	 * @param password password of the Faculty member
+	 * @param repeatPassword password of the Faculty member again
+	 * @param maxCourses max courses of the Faculty member, between 1 and 3 inclusive
+	 * @throws IllegalArgumentException if the password is null or does not match the repeat password.
+	 * @return true if the faculty member is added to the directory, false otherwise.
 	 * 
-	 * @param firstName
-	 * @param lastName
-	 * @param id
-	 * @param email
-	 * @param password
-	 * @param maxCourses
-	 * @return
 	 */
 	public boolean addFaculty(String firstName, String lastName, String id, String email, String password,
 			String repeatPassword, int maxCourses) {
@@ -90,7 +94,9 @@ public class FacultyDirectory {
 	}
 
 	/**
-	 * 
+	 * Method to remove Faculty from directory. 
+	 * @param id of the faculty member 
+	 * @return true if the faculty member was removed, false otherwise.
 	 */
 	public boolean removeFaculty(String id) {
 		for (int i = 0; i < facultyDirectory.size(); i++) {
@@ -104,8 +110,8 @@ public class FacultyDirectory {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Method to get a 2D array of faculty names and id's.
+	 * @return directory in a 2D array containing the first and last names, and the id.
 	 */
 	public String[][] getFacultyDirectory() {
 		String [][] directory = new String[facultyDirectory.size()][3];
@@ -119,7 +125,9 @@ public class FacultyDirectory {
 	}
 
 	/**
-	 * 
+	 * Method to save the current faculty directory to a file.
+	 * @param fileName to save the directory to
+	 * @throws IllegalArgumentException if there is any problem writing to the file.
 	 */
 	public void saveFacultyDirectory(String fileName) {
 		try {
@@ -130,9 +138,9 @@ public class FacultyDirectory {
 	}
 
 	/**
-	 * 
-	 * @param id
-	 * @return
+	 * Method to get a faculty member by their id.
+	 * @param id of the desired faculty 
+	 * @return f the faculty member object, null if the member was not found 
 	 */
 	public Faculty getFacultyById(String id) {
 		for (int i = 0; i < facultyDirectory.size(); i++) {
