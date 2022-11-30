@@ -144,6 +144,12 @@ public class LinkedListRecursive<E> {
 		if (index < 0 || index >= size) {
 			throw new IndexOutOfBoundsException();
 		}
+		else if (element == null) {
+			throw new NullPointerException();
+		}
+		else if (contains(element)) {
+			throw new IllegalArgumentException();
+		}
 		return front.set(index, element);
 	}
 
@@ -220,7 +226,7 @@ public class LinkedListRecursive<E> {
 		 * @param element the element to add to the list
 		 */
 		public void add(int index, E element) {
-			if (index == 0) {
+			if (index == 1) {
 				next = new ListNode(element, next);
 				return;
 			}
@@ -238,8 +244,7 @@ public class LinkedListRecursive<E> {
 			if (index == 0) {
 				return data;
 			}
-			next.get(index - 1);
-			return null;
+			return next.get(index - 1);
 		}
 
 		/**
