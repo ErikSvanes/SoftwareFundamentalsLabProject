@@ -116,8 +116,11 @@ public class CourseRecordIO {
 		  //NEW: see if there is a faculty member with the instructor id, if so, add Course to Faculty's faculty schedule.
 		  FacultyDirectory fd = RegistrationManager.getInstance().getFacultyDirectory();
 		  String[][] fdStr = fd.getFacultyDirectory();
+		  //System.out.println(fdStr.length);
 		  for(int i = 0; i < fdStr.length; i++) {
 			  if(fdStr[i][2].equals(instructorID)) {
+				  currentCourse.setInstructorId(instructorID);
+				  System.out.println(currentCourse.getInstructorId());
 				  fd.getFacultyById(instructorID).getSchedule().addCourseToSchedule(currentCourse);
 			  }
 		  }

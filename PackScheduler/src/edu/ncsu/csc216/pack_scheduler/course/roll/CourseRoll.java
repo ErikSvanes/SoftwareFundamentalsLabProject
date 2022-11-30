@@ -89,7 +89,7 @@ public class CourseRoll {
 			try {
 				roll.add(s);
 				//trying to fix here
-				s.getSchedule().addCourseToSchedule(course);
+				//s.getSchedule().addCourseToSchedule(course);
 			} catch (IllegalArgumentException IAE) {
 				waitlist.add(s);
 			}
