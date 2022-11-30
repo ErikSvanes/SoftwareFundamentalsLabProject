@@ -18,27 +18,28 @@ import edu.ncsu.csc216.pack_scheduler.user.Student;
 import edu.ncsu.csc216.pack_scheduler.user.User;
 import edu.ncsu.csc216.pack_scheduler.user.schedule.Schedule;
 
-/** 
+/**
  * Class to hold instance of RegistrationManager and communicate with the GUI.
- * @author devinmowry, 
+ * 
+ * @author devinmowry,
  *
  */
 public class RegistrationManager {
 	/** Single instance of the RegistrationManager class **/
 	private static RegistrationManager instance;
-	/** The CourseCatalog*/
+	/** The CourseCatalog */
 	private CourseCatalog courseCatalog;
-	/** The studentDirectory*/
+	/** The studentDirectory */
 	private StudentDirectory studentDirectory;
-	/** RegistrationManager Registrar*/
+	/** RegistrationManager Registrar */
 	private User registrar;
-	/** RegistrationManager Current User*/
+	/** RegistrationManager Current User */
 	private User currentUser;
 	/** The Faculty Directory */
 	private FacultyDirectory facultyDirectory;
 	/** Hashing algorithm */
 	private static final String HASH_ALGORITHM = "SHA-256";
-	/** Prop file*/
+	/** Prop file */
 	private static final String PROP_FILE = "registrar.properties";
 
 	private RegistrationManager() {
@@ -47,21 +48,22 @@ public class RegistrationManager {
 		this.studentDirectory = new StudentDirectory();
 		this.facultyDirectory = new FacultyDirectory();
 	}
-	
+
 	private void createRegistrar() {
 		Properties prop = new Properties();
-		
+
 		try (InputStream input = new FileInputStream(PROP_FILE)) {
 			prop.load(input);
-			
+
 			String hashPW = hashPW(prop.getProperty("pw"));
-			
-			registrar = new Registrar(prop.getProperty("first"), prop.getProperty("last"), prop.getProperty("id"), prop.getProperty("email"), hashPW);
+
+			registrar = new Registrar(prop.getProperty("first"), prop.getProperty("last"), prop.getProperty("id"),
+					prop.getProperty("email"), hashPW);
 		} catch (IOException e) {
 			throw new IllegalArgumentException("Cannot create registrar.");
 		}
 	}
-	
+
 	private String hashPW(String pw) {
 		try {
 			MessageDigest digest1 = MessageDigest.getInstance(HASH_ALGORITHM);
@@ -71,20 +73,22 @@ public class RegistrationManager {
 			throw new IllegalArgumentException("Cannot hash password");
 		}
 	}
-	
+
 	/**
 	 * Method to get instance of RegistrationManager.
+	 * 
 	 * @return instance of RegistrationManager
 	 */
 	public static RegistrationManager getInstance() {
-		  if (instance == null) {
+		if (instance == null) {
 			instance = new RegistrationManager();
 		}
 		return instance;
 	}
-	
+
 	/**
 	 * Method to get the CourseCatalog object.
+	 * 
 	 * @return courseCatalog object.
 	 */
 	public CourseCatalog getCourseCatalog() {
@@ -93,14 +97,16 @@ public class RegistrationManager {
 
 	/**
 	 * Method to get the StudentDirectory object.
+	 * 
 	 * @return studentDirectory object
 	 */
 	public StudentDirectory getStudentDirectory() {
 		return studentDirectory;
 	}
-	
+
 	/**
 	 * Method to get the FacultyDirectory object.
+	 * 
 	 * @return facultyDirectory object
 	 */
 	public FacultyDirectory getFacultyDirectory() {
@@ -109,40 +115,40 @@ public class RegistrationManager {
 
 	/**
 	 * Method to log into the RegistrationManager
-	 * @param id of user
+	 * 
+	 * @param id       of user
 	 * @param password of user
 	 * @return boolean true if login was successful, false otherwise.
 	 */
 	public boolean login(String id, String password) {
-		if(currentUser == null) {
+		if (currentUser == null) {
 			String localHashPW = hashPW(password);
-			if (registrar.getId().equals(id)) {	
+			if (registrar.getId().equals(id)) {
 				if (registrar.getPassword().equals(localHashPW)) {
 					currentUser = registrar;
-						return true;
-				}
-				else {
+					return true;
+				} else {
 					return false;
 				}
-			} 
-				Student s = studentDirectory.getStudentById(id);
-				Faculty f = facultyDirectory.getFacultyById(id);
-				if(s != null){
-					if (s.getPassword().equals(localHashPW)) {
-						currentUser = s;
-						return true;
-					}
-					return false;
+			}
+			Student s = studentDirectory.getStudentById(id);
+			Faculty f = facultyDirectory.getFacultyById(id);
+			if (s != null) {
+				if (s.getPassword().equals(localHashPW)) {
+					currentUser = s;
+					return true;
 				}
-				
-				else if(f != null){
-					if (f.getPassword().equals(localHashPW)) {
-						currentUser = f;
-						return true;
-					}
-					return false;
+				return false;
+			}
+
+			else if (f != null) {
+				if (f.getPassword().equals(localHashPW)) {
+					currentUser = f;
+					return true;
 				}
-			
+				return false;
+			}
+
 			else {
 				throw new IllegalArgumentException("User doesn't exist.");
 			}
@@ -154,17 +160,18 @@ public class RegistrationManager {
 	 * Method to log the current user out of the registrar.
 	 */
 	public void logout() {
-		currentUser = null; 
+		currentUser = null;
 	}
-	
+
 	/**
 	 * Method to get current user.
-	 * @return currentUser of the manager. 
+	 * 
+	 * @return currentUser of the manager.
 	 */
 	public User getCurrentUser() {
 		return currentUser;
 	}
-	
+
 	/**
 	 * Method to clear the course catalog and the student directory.
 	 */
@@ -173,90 +180,94 @@ public class RegistrationManager {
 		studentDirectory.newStudentDirectory();
 		facultyDirectory.newFacultyDirectory();
 	}
-	
+
 	/**
 	 * Inner class to create Registrar user.
+	 * 
 	 * @author devinmowry
 	 *
 	 */
 	private static class Registrar extends User {
 		/**
 		 * Create a registrar user.
+		 * 
 		 * @param firstName registrar's first name
-		 * @param lastName registrar's last name
-		 * @param id registrar's id
-		 * @param email registrar's email
-		 * @param hashPW registrar's hashPW
+		 * @param lastName  registrar's last name
+		 * @param id        registrar's id
+		 * @param email     registrar's email
+		 * @param hashPW    registrar's hashPW
 		 */
-	    public Registrar(String firstName, String lastName, String id, String email, String hashPW) {
-	        super(firstName, lastName, id, email, hashPW);
-	    }
+		public Registrar(String firstName, String lastName, String id, String email, String hashPW) {
+			super(firstName, lastName, id, email, hashPW);
+		}
 	}
-	
+
 	/**
 	 * Returns true if the logged in student can enroll in the given course.
+	 * 
 	 * @param c Course to enroll in
 	 * @return true if enrolled
 	 */
 	public boolean enrollStudentInCourse(Course c) {
-	    if (!(currentUser instanceof Student)) {
-	        throw new IllegalArgumentException("Illegal Action");
-	    }
-	    try {
-	        Student s = (Student)currentUser;
-	        Schedule schedule = s.getSchedule();
-	        CourseRoll roll = c.getCourseRoll();
-	        
-	        if (s.canAdd(c) && roll.canEnroll(s)) {
-	            schedule.addCourseToSchedule(c);
-	            roll.enroll(s);
-	            return true;
-	        }
-	        
-	    } catch (IllegalArgumentException e) {
-	        return false;
-	    }
-	    return false;
+		if (!(currentUser instanceof Student)) {
+			throw new IllegalArgumentException("Illegal Action");
+		}
+		try {
+			Student s = (Student) currentUser;
+			Schedule schedule = s.getSchedule();
+			CourseRoll roll = c.getCourseRoll();
+
+			if (s.canAdd(c) && roll.canEnroll(s)) {
+				schedule.addCourseToSchedule(c);
+				roll.enroll(s);
+				return true;
+			}
+
+		} catch (IllegalArgumentException e) {
+			return false;
+		}
+		return false;
 	}
 
 	/**
 	 * Returns true if the logged in student can drop the given course.
+	 * 
 	 * @param c Course to drop
 	 * @return true if dropped
 	 */
 	public boolean dropStudentFromCourse(Course c) {
-	    if (!(currentUser instanceof Student)) {
-	        throw new IllegalArgumentException("Illegal Action");
-	    }
-	    try {
-	        Student s = (Student)currentUser;
-	        c.getCourseRoll().drop(s);
-	        return s.getSchedule().removeCourseFromSchedule(c);
-	    } catch (IllegalArgumentException e) {
-	        return false; 
-	    }
+		if (!(currentUser instanceof Student)) {
+			throw new IllegalArgumentException("Illegal Action");
+		}
+		try {
+			Student s = (Student) currentUser;
+			c.getCourseRoll().drop(s);
+			return s.getSchedule().removeCourseFromSchedule(c);
+		} catch (IllegalArgumentException e) {
+			return false;
+		}
 	}
 
 	/**
-	 * Resets the logged in student's schedule by dropping them
-	 * from every course and then resetting the schedule.
+	 * Resets the logged in student's schedule by dropping them from every course
+	 * and then resetting the schedule.
 	 */
 	public void resetSchedule() {
-	    if (!(currentUser instanceof Student)) {
-	        throw new IllegalArgumentException("Illegal Action");
-	    }
-	    try {
-	        Student s = (Student)currentUser;
-	        Schedule schedule = s.getSchedule();
-	        String [][] scheduleArray = schedule.getScheduledCourses();
-	        for (int i = 0; i < scheduleArray.length; i++) {
-	            Course c = courseCatalog.getCourseFromCatalog(scheduleArray[i][0], scheduleArray[i][1]);
-	            c.getCourseRoll().drop(s);
-	        }
-	        schedule.resetSchedule();
-	    } catch (IllegalArgumentException e) {
-	        //do nothing 
-	    }
+		if (!(currentUser instanceof Student)) {
+			throw new IllegalArgumentException("Illegal Action");
+		}
+		try {
+			Student s = (Student) currentUser;
+			Schedule schedule = s.getSchedule();
+			String[][] scheduleArray = schedule.getScheduledCourses();
+			for (int i = 0; i < scheduleArray.length; i++) {
+				Course c = courseCatalog.getCourseFromCatalog(scheduleArray[i][0], scheduleArray[i][1]);
+				c.getCourseRoll().drop(s);
+			}
+			schedule.resetSchedule();
+		} catch (IllegalArgumentException e) {
+			// do nothing
+		}
 	}
-	
+
 }
