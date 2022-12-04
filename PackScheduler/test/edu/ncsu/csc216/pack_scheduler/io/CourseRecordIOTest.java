@@ -94,7 +94,7 @@ public class CourseRecordIOTest {
 		
 		try {
 			SortedList<Course> courses = CourseRecordIO.readCourseRecords(validTestFile);
-			assertEquals(13, courses.size());
+			assertEquals(12, courses.size());
 
 			for (int i = 0; i < validCourses.length; i++) {
 				assertEquals(validCourses[i], courses.get(i).toString());

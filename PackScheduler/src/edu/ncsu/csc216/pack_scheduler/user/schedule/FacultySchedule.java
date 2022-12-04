@@ -55,10 +55,11 @@ public class FacultySchedule {
 	/**
 	 * Removes a course from the schedule.
 	 * @param course Course to remove from the schedule
-	 * @return true if added
+	 * @return true if removed
 	 */
 	public boolean removeCourseFromSchedule(Course course) {
 		if (schedule.remove(course)) {
+			System.out.println("setting IID to null");
 			course.setInstructorId(null);
 			return true;
 		}

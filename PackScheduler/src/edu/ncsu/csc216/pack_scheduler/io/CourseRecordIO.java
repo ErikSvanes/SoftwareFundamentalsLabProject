@@ -120,7 +120,7 @@ public class CourseRecordIO {
 		  for(int i = 0; i < fdStr.length; i++) {
 			  if(fdStr[i][2].equals(instructorID)) {
 				  currentCourse.setInstructorId(instructorID);
-				  System.out.println(currentCourse.getInstructorId());
+				  System.out.println("This courses IID: " + currentCourse.getInstructorId());
 				  fd.getFacultyById(instructorID).getSchedule().addCourseToSchedule(currentCourse);
 			  }
 		  }

@@ -105,7 +105,7 @@ public class FacultyScheduleTest {
 		assertEquals("Added CSC216-001 and CSC226-001 to schedule.  Value at [0][1] should be 001, but was not.", "001", actSchedule[0][1]);
 		assertEquals("Added CSC216-001 and CSC226-001 to schedule.  Value at [0][2] should be Software Development Fundamentals, but was not.", "Software Development Fundamentals", actSchedule[0][2]);
 		assertEquals("Added CSC216-001 and CSC226-001 to schedule.  Value at [0][3] should be TH 1:30PM-2:45PM, but was not.", "TH 1:30PM-2:45PM", actSchedule[0][3]);
-		assertEquals("Added CSC216-001 and CSC226-001 to schedule.  Value at [1][0] should be CSC226, but was not.", "CSC226", actSchedule[01][0]);
+		assertEquals("Added CSC216-001 and CSC226-001 to schedule.  Value at [1][0] should be CSC226, but was not.", "CSC226", actSchedule[1][0]);
 		assertEquals("Added CSC216-001 and CSC226-001 to schedule.  Value at [1][1] should be 001, but was not.", "001", actSchedule[1][1]);
 		assertEquals("Added CSC216-001 and CSC226-001 to schedule.  Value at [1][2] should be , but was not.", "Discrete Mathematics for Computer Scientists", actSchedule[1][2]);
 		assertEquals("Added CSC216-001 and CSC226-001 to schedule.  Value at [1][3] should be TH 1:30PM-2:45PM, but was not.", "MWF 9:35AM-10:25AM", actSchedule[1][3]);
