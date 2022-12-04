@@ -57,10 +57,10 @@ public class CourseRecordIOTest {
 	/** Expected results for valid courses in course_records.txt - line 14 */
 	private final String validCourse13 = "CSC316,Data Structures and Algorithms,001,3,jtking,10,MW,830,945";
 
-	/** Array to hold expected results */
-	private final String[] validCourses = { validCourse1, validCourse2, validCourse3, validCourse4, validCourse5,
-			validCourse6, validCourse7, validCourse8, validCourse9, validCourse10, validCourse11, validCourse12,
-			validCourse13 };
+//	/** Array to hold expected results */
+//	private final String[] validCourses = { validCourse1, validCourse2, validCourse3, validCourse4, validCourse5,
+//			validCourse6, validCourse7, validCourse8, validCourse9, validCourse10, validCourse11, validCourse12,
+//			validCourse13 };
 	
 	/** Instance of RegistrationManager */ 
 	private RegistrationManager manager;
