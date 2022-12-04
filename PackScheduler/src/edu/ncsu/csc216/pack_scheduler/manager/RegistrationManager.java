@@ -16,6 +16,7 @@ import edu.ncsu.csc216.pack_scheduler.directory.StudentDirectory;
 import edu.ncsu.csc216.pack_scheduler.user.Faculty;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 import edu.ncsu.csc216.pack_scheduler.user.User;
+import edu.ncsu.csc216.pack_scheduler.user.schedule.FacultySchedule;
 import edu.ncsu.csc216.pack_scheduler.user.schedule.Schedule;
 
 /**
@@ -269,5 +270,42 @@ public class RegistrationManager {
 			// do nothing
 		}
 	}
+	
+	/**
+	 * Adds the courses to the faculty schedule
+	 * @param c the course object that represents the course
+	 * @param f the facultySchedule object that represents the faculty
+	 * @return the course to add to the schedule
+	 */
+	public boolean addFacultyToCourse(Course c, FacultySchedule f) {
+		if(currentUser != null && currentUser == registrar) {
+			return f.addCourseToSchedule(c);
+		}
+		return false;
+	}
+	/**
+	 * Removes the course to the faculty schedule
+	 * @param c the course object that represents the course
+	 * @param f the facultySchedule object that represents the faculty
+	 * @return the course to remove from the schedule
+	 */
+	public boolean removeFacultyFromCourse(Course c, FacultySchedule f) {
+		if(currentUser != null && currentUser == registrar) {
+			return f.removeCourseFromSchedule(c);
+		}
+		return false;
+	}
+	/**
+	 * Resets the faculty schedule
+	 * @param f the facultySchedule object that represents the faculty
+	 */
+	public void resetFacultySchedule(FacultySchedule f) {
+		if(currentUser != null && currentUser == registrar) {
+			f.resetSchedule();
+		}
+
+	}
+	
+	
 
 }
