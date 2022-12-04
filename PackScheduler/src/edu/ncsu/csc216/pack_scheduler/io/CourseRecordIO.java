@@ -119,9 +119,9 @@ public class CourseRecordIO {
 		  //System.out.println(fdStr.length);
 		  for(int i = 0; i < fdStr.length; i++) {
 			  if(fdStr[i][2].equals(instructorID)) {
-				  //currentCourse.setInstructorId(instructorID);
 				  //System.out.println("This courses IID: " + currentCourse.getInstructorId());
 				  fd.getFacultyById(instructorID).getSchedule().addCourseToSchedule(currentCourse);
+				  currentCourse.setInstructorId(instructorID);
 				  lineScan.close();
 				  return currentCourse;
 			  }
