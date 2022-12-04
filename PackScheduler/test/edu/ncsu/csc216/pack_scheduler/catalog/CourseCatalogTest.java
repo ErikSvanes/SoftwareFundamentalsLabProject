@@ -24,8 +24,8 @@ public class CourseCatalogTest {
 	private static final String SECTION = "001";
 	/** Course credits */
 	private static final int CREDITS = 3;
-	/** Course instructor id */
-	private static final String INSTRUCTOR_ID = "sesmith5";
+//	/** Course instructor id */
+//	private static final String INSTRUCTOR_ID = "sesmith5";
 	/** Course enrollment cap */
 	private static final int ENROLLMENT_CAP = 200;
 	/** Course meeting days */
