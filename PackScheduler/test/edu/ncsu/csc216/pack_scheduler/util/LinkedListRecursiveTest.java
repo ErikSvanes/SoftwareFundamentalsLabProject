@@ -92,4 +92,5 @@ class LinkedListRecursiveTest {
 		assertTrue(list.set(0, 7).equals(1));
 		assertTrue(list.get(0).equals(7));
 	}
+
 }

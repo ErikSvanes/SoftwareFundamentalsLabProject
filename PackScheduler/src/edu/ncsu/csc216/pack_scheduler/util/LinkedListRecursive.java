@@ -300,8 +300,7 @@ public class LinkedListRecursive<E> {
 				data = element;
 				return rtn;
 			}
-			next.set(index - 1, element);
-			return null;
+			return next.set(index - 1, element);
 		}
 	}
 }
