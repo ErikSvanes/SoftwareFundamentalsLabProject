@@ -80,47 +80,51 @@ public class RegistrationManagerTest {
 		assertEquals("CSC116", catalog[2][0]);
 		assertEquals("003", catalog[2][1]);
 		assertEquals("Intro to Programming - Java", catalog[2][2]);
-		//Row 3
-		assertEquals("CSC216", catalog[3][0]);
-		assertEquals("001", catalog[3][1]);
-		assertEquals("Software Development Fundamentals", catalog[3][2]);
-		//Row 4
-		assertEquals("CSC216", catalog[4][0]);
-		assertEquals("002", catalog[4][1]);
-		assertEquals("Software Development Fundamentals", catalog[4][2]);
-		//Row 5
-		assertEquals("CSC216", catalog[5][0]);
-		assertEquals("601", catalog[5][1]);
-		assertEquals("Software Development Fundamentals", catalog[5][2]);
-		//Row 6
-		assertEquals("CSC217", catalog[6][0]);
-		assertEquals("202", catalog[6][1]);
-		assertEquals("Software Development Fundamentals Lab", catalog[6][2]);
-		//Row 7
-		assertEquals("CSC217", catalog[7][0]);
-		assertEquals("211", catalog[7][1]);
-		assertEquals("Software Development Fundamentals Lab", catalog[7][2]);
-		//Row 8
-		assertEquals("CSC217", catalog[8][0]);
-		assertEquals("223", catalog[8][1]);
-		assertEquals("Software Development Fundamentals Lab", catalog[8][2]);
-		//Row 9
-		assertEquals("CSC217", catalog[9][0]);
-		assertEquals("601", catalog[9][1]);
-		assertEquals("Software Development Fundamentals Lab", catalog[9][2]);
-		//Row 10
-		assertEquals("CSC226", catalog[10][0]);
-		assertEquals("001", catalog[10][1]);
-		assertEquals("Discrete Mathematics for Computer Scientists", catalog[10][2]);
-		//Row 11
-		assertEquals("CSC230", catalog[11][0]);
-		assertEquals("001", catalog[11][1]);
-		assertEquals("C and Software Tools", catalog[11][2]);
-		//Row 12
-		assertEquals("CSC316", catalog[12][0]);
-		assertEquals("001", catalog[12][1]);
-		assertEquals("Data Structures and Algorithms", catalog[12][2]);	}
-
+		// Row 3
+				assertEquals("CSC116", catalog[3][0]);
+				assertEquals("002", catalog[3][1]);
+				assertEquals("Intro to Programming - Java", catalog[3][2]);
+				// Row 3 (duplicate)
+				assertEquals("CSC216", catalog[4][0]);
+				assertEquals("001", catalog[4][1]);
+				assertEquals("Software Development Fundamentals", catalog[4][2]);
+				// Row 4
+				assertEquals("CSC216", catalog[5][0]);
+				assertEquals("002", catalog[5][1]);
+				assertEquals("Software Development Fundamentals", catalog[5][2]);
+				// Row 5
+				assertEquals("CSC216", catalog[6][0]);
+				assertEquals("601", catalog[6][1]);
+				assertEquals("Software Development Fundamentals", catalog[6][2]);
+				// Row 6
+				assertEquals("CSC217", catalog[7][0]);
+				assertEquals("202", catalog[7][1]);
+				assertEquals("Software Development Fundamentals Lab", catalog[7][2]);
+				// Row 7
+				assertEquals("CSC217", catalog[8][0]);
+				assertEquals("211", catalog[8][1]);
+				assertEquals("Software Development Fundamentals Lab", catalog[8][2]);
+				// Row 8
+				assertEquals("CSC217", catalog[9][0]);
+				assertEquals("223", catalog[9][1]);
+				assertEquals("Software Development Fundamentals Lab", catalog[9][2]);
+				// Row 9
+				assertEquals("CSC217", catalog[10][0]);
+				assertEquals("601", catalog[10][1]);
+				assertEquals("Software Development Fundamentals Lab", catalog[10][2]);
+				// Row 10
+				assertEquals("CSC226", catalog[11][0]);
+				assertEquals("001", catalog[11][1]);
+				assertEquals("Discrete Mathematics for Computer Scientists", catalog[11][2]);
+				// Row 11
+				assertEquals("CSC230", catalog[12][0]);
+				assertEquals("001", catalog[12][1]);
+				assertEquals("C and Software Tools", catalog[12][2]);
+				// Row 12
+				assertEquals("CSC316", catalog[13][0]);
+				assertEquals("001", catalog[13][1]);
+				assertEquals("Data Structures and Algorithms", catalog[13][2]);
+	}
 	/**
 	 * Tests the getStudentDirectory() method.
 	 */
