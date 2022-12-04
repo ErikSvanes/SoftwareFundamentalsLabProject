@@ -94,7 +94,7 @@ public class CourseRecordIOTest {
 		manager.getFacultyDirectory().addFaculty("John", "Tetter", "jctetter", "jctetter@ncsu.edu", "password", "password", 2);
 		try {
 			SortedList<Course> courses = CourseRecordIO.readCourseRecords(validTestFile);
-			assertEquals(14, courses.size());
+			assertEquals(13, courses.size());
 			assertEquals(courses.get(0).getInstructorId(), "jdyoung2");
 			assertEquals(courses.get(1).getInstructorId(), null);
 			assertEquals(courses.get(2).getInstructorId(), null);
