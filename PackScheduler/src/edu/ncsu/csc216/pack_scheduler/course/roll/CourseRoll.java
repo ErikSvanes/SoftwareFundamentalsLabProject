@@ -94,9 +94,9 @@ public class CourseRoll {
 				waitlist.add(s);
 			}
 		}
-		if (enrollmentCap == roll.size() && waitlist.size() == WAITLIST_SIZE) {
-			throw new IllegalArgumentException("Cannot add student.");
-		}
+//		if (enrollmentCap == roll.size() && waitlist.size() == WAITLIST_SIZE) {
+//			throw new IllegalArgumentException("Cannot add student.");
+//		}
 	}
 
 	/**
