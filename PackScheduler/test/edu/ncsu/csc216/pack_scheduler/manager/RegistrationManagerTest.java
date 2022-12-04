@@ -501,6 +501,19 @@ public class RegistrationManagerTest {
 	 */
 	@Test
 	public void testResetFacultySchedule() {
+		Faculty f = new Faculty("first", "last", "flast", "first_last@ncsu.edu", "password", 3);
+		CourseCatalog catalog = new CourseCatalog();
+		catalog.loadCoursesFromFile("test-files/course_records.txt");
+		Course course = catalog.getCourseFromCatalog("CSC116", "002");
+		f.getSchedule().addCourseToSchedule(course);
+		
+		StudentDirectory directory = manager.getStudentDirectory();
+		directory.loadStudentsFromFile("test-files/student_records.txt");
+		manager.login("ahicks", "pw");
+		Exception e1 = assertThrows(IllegalArgumentException.class,
+				() -> manager.resetFacultySchedule(f));
+		manager.logout();
+		
 		Properties prop = new Properties();
 		
 		try (InputStream input = new FileInputStream(PROP_FILE)) {
@@ -510,11 +523,7 @@ public class RegistrationManagerTest {
 		} catch (IOException e) {
 			throw new IllegalArgumentException("Cannot create new student .");
 		}
-		Faculty f = new Faculty("first", "last", "flast", "first_last@ncsu.edu", "password", 3);
-		CourseCatalog catalog = new CourseCatalog();
-		catalog.loadCoursesFromFile("test-files/course_records.txt");
-		Course course = catalog.getCourseFromCatalog("CSC116", "002");
-		f.getSchedule().addCourseToSchedule(course);
+		
 		assertEquals(1, f.getSchedule().getNumScheduledCourses());
 		manager.resetFacultySchedule(f);
 		assertEquals(0, f.getSchedule().getNumScheduledCourses());
@@ -525,6 +534,18 @@ public class RegistrationManagerTest {
 	 */
 	@Test
 	public void testRemoveFacultyFromCourse() {
+		Faculty f = new Faculty("first", "last", "flast", "first_last@ncsu.edu", "password", 3);
+		CourseCatalog catalog = new CourseCatalog();
+		catalog.loadCoursesFromFile("test-files/course_records.txt");
+		Course course = catalog.getCourseFromCatalog("CSC116", "002");
+		
+		StudentDirectory directory = manager.getStudentDirectory();
+		directory.loadStudentsFromFile("test-files/student_records.txt");
+		manager.login("ahicks", "pw");
+		Exception e1 = assertThrows(IllegalArgumentException.class,
+				() -> manager.removeFacultyFromCourse(course, f));
+		manager.logout();
+		
 		Properties prop = new Properties();
 		
 		try (InputStream input = new FileInputStream(PROP_FILE)) {
@@ -534,10 +555,7 @@ public class RegistrationManagerTest {
 		} catch (IOException e) {
 			throw new IllegalArgumentException("Cannot create new student .");
 		}
-		Faculty f = new Faculty("first", "last", "flast", "first_last@ncsu.edu", "password", 3);
-		CourseCatalog catalog = new CourseCatalog();
-		catalog.loadCoursesFromFile("test-files/course_records.txt");
-		Course course = catalog.getCourseFromCatalog("CSC116", "002");
+		
 		f.getSchedule().addCourseToSchedule(course);
 		Course course2 = catalog.getCourseFromCatalog("CSC216", "001");
 		f.getSchedule().addCourseToSchedule(course2);
