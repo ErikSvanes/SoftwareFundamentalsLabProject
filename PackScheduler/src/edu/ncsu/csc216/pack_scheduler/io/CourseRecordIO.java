@@ -37,23 +37,23 @@ public class CourseRecordIO {
 	            Course course = readCourse(fileReader.nextLine()); 
 
 	            //Create a flag to see if the newly created Course is a duplicate of something already in the list  
-//	            boolean duplicate = false;
-//	            //Look at all the courses in our list
-//	            for (int i = 0; i < courses.size(); i++) {
-//	                //Get the course at index i
-//	                Course current = courses.get(i);
-//	                //Check if the name and section are the same
-//	                if (course.getName().equals(current.getName()) &&
-//	                        course.getSection().equals(current.getSection())) {
-//	                    //It's a duplicate!
-//	                    duplicate = true;
-//	                    break; //We can break out of the loop, no need to continue searching
-//	                }
-//	            }
-//	            //If the course is NOT a duplicate
-//	            if (!duplicate) {
+	            boolean duplicate = false;
+	            //Look at all the courses in our list
+	            for (int i = 0; i < courses.size(); i++) {
+	                //Get the course at index i
+	                Course current = courses.get(i);
+	                //Check if the name and section are the same
+	                if (course.getName().equals(current.getName()) &&
+	                        course.getSection().equals(current.getSection())) {
+	                    //It's a duplicate!
+	                    duplicate = true;
+	                    break; //We can break out of the loop, no need to continue searching
+	                }
+	            }
+	            //If the course is NOT a duplicate
+	            if (!duplicate) {
 	                courses.add(course); //Add to the ArrayList!
-	           // } //Otherwise ignore
+	            } //Otherwise ignore
 	        } catch (IllegalArgumentException e) {
 	            //The line is invalid b/c we couldn't create a course, skip it!
 	        }
