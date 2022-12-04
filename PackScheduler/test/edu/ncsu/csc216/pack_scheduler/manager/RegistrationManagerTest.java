@@ -510,7 +510,7 @@ public class RegistrationManagerTest {
 		StudentDirectory directory = manager.getStudentDirectory();
 		directory.loadStudentsFromFile("test-files/student_records.txt");
 		manager.login("ahicks", "pw");
-		Exception e1 = assertThrows(IllegalArgumentException.class,
+		assertThrows(IllegalArgumentException.class,
 				() -> manager.resetFacultySchedule(f));
 		manager.logout();
 		
@@ -542,7 +542,7 @@ public class RegistrationManagerTest {
 		StudentDirectory directory = manager.getStudentDirectory();
 		directory.loadStudentsFromFile("test-files/student_records.txt");
 		manager.login("ahicks", "pw");
-		Exception e1 = assertThrows(IllegalArgumentException.class,
+		assertThrows(IllegalArgumentException.class,
 				() -> manager.removeFacultyFromCourse(course, f));
 		manager.logout();
 		
