@@ -277,9 +277,9 @@ public class RegistrationManager {
 	 * @param f the facultySchedule object that represents the faculty
 	 * @return the course to add to the schedule
 	 */
-	public boolean addFacultyToCourse(Course c, FacultySchedule f) {
+	public boolean addFacultyToCourse(Course c, Faculty f) {
 		if(currentUser != null && currentUser == registrar) {
-			return f.addCourseToSchedule(c);
+			return f.getSchedule().addCourseToSchedule(c);
 		}
 		return false;
 	}
@@ -289,9 +289,9 @@ public class RegistrationManager {
 	 * @param f the facultySchedule object that represents the faculty
 	 * @return the course to remove from the schedule
 	 */
-	public boolean removeFacultyFromCourse(Course c, FacultySchedule f) {
+	public boolean removeFacultyFromCourse(Course c, Faculty f) {
 		if(currentUser != null && currentUser == registrar) {
-			return f.removeCourseFromSchedule(c);
+			return f.getSchedule().removeCourseFromSchedule(c);
 		}
 		return false;
 	}
@@ -299,9 +299,9 @@ public class RegistrationManager {
 	 * Resets the faculty schedule
 	 * @param f the facultySchedule object that represents the faculty
 	 */
-	public void resetFacultySchedule(FacultySchedule f) {
+	public void resetFacultySchedule(Faculty f) {
 		if(currentUser != null && currentUser == registrar) {
-			f.resetSchedule();
+			f.getSchedule().resetSchedule();
 		}
 
 	}
