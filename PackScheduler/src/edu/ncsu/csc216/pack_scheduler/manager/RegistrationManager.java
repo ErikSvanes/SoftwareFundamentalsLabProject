@@ -277,8 +277,13 @@ public class RegistrationManager {
 	 * @return the course to add to the schedule
 	 */
 	public boolean addFacultyToCourse(Course c, Faculty f) {
-		if(currentUser != null && currentUser == registrar) {
-			return f.getSchedule().addCourseToSchedule(c);
+		if(currentUser != null) {
+			if (currentUser != registrar) {
+				throw new IllegalArgumentException("User is not a registrar");
+			}
+			else {
+				return f.getSchedule().addCourseToSchedule(c);
+			}
 		}
 		return false;
 	}
@@ -289,8 +294,13 @@ public class RegistrationManager {
 	 * @return the course to remove from the schedule
 	 */
 	public boolean removeFacultyFromCourse(Course c, Faculty f) {
-		if(currentUser != null && currentUser == registrar) {
-			return f.getSchedule().removeCourseFromSchedule(c);
+		if(currentUser != null) {
+			if (currentUser != registrar) {
+				throw new IllegalArgumentException("User is not a registrar");
+			}
+			else {
+				return f.getSchedule().removeCourseFromSchedule(c);
+			}
 		}
 		return false;
 	}
@@ -299,10 +309,14 @@ public class RegistrationManager {
 	 * @param f the facultySchedule object that represents the faculty
 	 */
 	public void resetFacultySchedule(Faculty f) {
-		if(currentUser != null && currentUser == registrar) {
-			f.getSchedule().resetSchedule();
+		if(currentUser != null) {
+			if (currentUser != registrar) {
+				throw new IllegalArgumentException("User is not a registrar");
+			}
+			else {
+				f.getSchedule().resetSchedule();
+			}
 		}
-
 	}
 	
 	
