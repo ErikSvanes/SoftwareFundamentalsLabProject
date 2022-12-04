@@ -9,8 +9,8 @@
 | Update and Test Faculty | Devin | 11/30/22 | Complete | 
 | Update and Test Course and CourseRecordIO | Devin | 12/1/22 | Complete | 
 | Update ResistrationManager | Drew | 11/25/22 | Complete |
-| Testing | Pair Programming | 12/4/22 | In progress |
-| Deployment | Pair Programming | 12/4/22 | Pending | 
+| Testing | Pair Programming | 12/4/22 | Complete |
+| Deployment | Pair Programming | 12/4/22 | Complete | 
 
 # Lab 10
 
