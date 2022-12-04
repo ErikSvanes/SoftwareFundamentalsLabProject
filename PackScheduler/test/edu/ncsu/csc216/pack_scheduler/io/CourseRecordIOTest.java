@@ -98,7 +98,7 @@ public class CourseRecordIOTest {
 			assertEquals(courses.get(0).getInstructorId(), "jdyoung2");
 			assertEquals(courses.get(1).getInstructorId(), null);
 			assertEquals(courses.get(2).getInstructorId(), null);
-			assertEquals(courses.get(6).getInstructorId(), "jctetter");
+			assertEquals(courses.get(5).getInstructorId(), "jctetter");
 			
 //			for (int i = 0; i < validCourses.length; i++) {
 //				assertEquals(validCourses[i], courses.get(i).toString());
