@@ -501,7 +501,18 @@ public class RegistrationManagerTest {
 	 */
 	@Test
 	public void testResetFacultySchedule() {
-		manager.login("epsvanes", "asdf");
+		Properties prop = new Properties();
+		
+		try (InputStream input = new FileInputStream(PROP_FILE)) {
+			prop.load(input);
+			//sd.addStudent(prop.getProperty("first"), prop.getProperty("last"), prop.getProperty("id"), prop.getProperty("email"), prop.getProperty("pw"), prop.getProperty("pw"), 16);
+			assertTrue(manager.login(prop.getProperty("id"), prop.getProperty("pw")));
+		} catch (IOException e) {
+			throw new IllegalArgumentException("Cannot create new student .");
+		}
+//		FacultyDirectory directory = manager.getFacultyDirectory();
+//		directory.loadFacultyFromFile("test-files/faculty_records.txt");
+//		manager.login("awitt", "pw");
 		Faculty f = new Faculty("first", "last", "flast", "first_last@ncsu.edu", "password", 3);
 		CourseCatalog catalog = new CourseCatalog();
 		catalog.loadCoursesFromFile("test-files/course_records.txt");
