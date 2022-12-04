@@ -97,10 +97,10 @@ public class LinkedListRecursive<E> {
 	}
 
 	/**
-	 * asdf
+	 * Method to remove an element by the element.
 	 * 
-	 * @param element asdf
-	 * @return asdf
+	 * @param element to be removed
+	 * @return true if the element was removed.
 	 */
 	public boolean remove(E element) {
 		if (element == null) {
