@@ -55,6 +55,8 @@ public class LinkedListRecursive<E> {
 		}
 		if (isEmpty()) {
 			front = new ListNode(element, null);
+			size++;
+			return true;
 		}
 		size++;
 		return front.add(element);

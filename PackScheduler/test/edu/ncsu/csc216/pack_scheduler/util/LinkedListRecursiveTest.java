@@ -71,8 +71,8 @@ class LinkedListRecursiveTest {
 		list.add(5);
 		list.add(6);
 		assertEquals(list.size(), 6);
-		assertEquals(list.remove(0), 1);
-		assertEquals(list.remove(1), 3);
+		assertEquals(1, list.remove(0));
+		assertEquals(3, list.remove(1));
 		assertEquals(list.size(), 4);
 		for(int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
