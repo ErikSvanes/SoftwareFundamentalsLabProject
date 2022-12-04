@@ -11,8 +11,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import edu.ncsu.csc216.pack_scheduler.catalog.CourseCatalog;
+import edu.ncsu.csc216.pack_scheduler.course.Course;
 import edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory;
 import edu.ncsu.csc216.pack_scheduler.directory.StudentDirectory;
+import edu.ncsu.csc216.pack_scheduler.user.Faculty;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 import edu.ncsu.csc216.pack_scheduler.user.schedule.Schedule;
 
@@ -494,5 +496,20 @@ public class RegistrationManagerTest {
 		manager.logout();
 	}
 
+	/**
+	 * Tests RegistrationManager.restFacultySchedule()
+	 */
+	@Test
+	public void testResetFacultySchedule() {
+		manager.login("epsvanes", "asdf");
+		Faculty f = new Faculty("first", "last", "flast", "first_last@ncsu.edu", "password", 3);
+		CourseCatalog catalog = new CourseCatalog();
+		catalog.loadCoursesFromFile("test-files/course_records.txt");
+		Course course = catalog.getCourseFromCatalog("CSC116", "002");
+		f.getSchedule().addCourseToSchedule(course);
+		assertEquals(1, f.getSchedule().getNumScheduledCourses());
+		manager.resetFacultySchedule(f);
+		assertEquals(0, f.getSchedule().getNumScheduledCourses());
+	}
 	
 }
