@@ -57,7 +57,7 @@ public class FacultySchedule {
 	 */
 	public boolean removeCourseFromSchedule(Course course) {
 		if (schedule.remove(course)) {
-			System.out.println("setting IID to null");
+			//System.out.println("setting IID to null");
 			course.setInstructorId(null);
 			return true;
 		}
