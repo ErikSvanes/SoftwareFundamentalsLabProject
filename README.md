@@ -9,8 +9,8 @@
 | Update and Test Faculty | Devin | 11/30/22 | Complete | 
 | Update and Test Course and CourseRecordIO | Devin | 11/30/22 | Complete | 
 | Update ResistrationManager | Drew | 11/25/22 | Complete |
-| Testing | Pair Programming | 11/27/22 | Complete |
-| Deployment | Erik | 11/28/22 | Complete | 
+| Testing | Pair Programming | 11/27/22 | In progress |
+| Deployment | Erik | 11/28/22 | Pending | 
 
 # Lab 10
 
@@ -21,8 +21,8 @@
 | Implement and Test FacultyRecordIO | Devin | 11/22/22 | Complete | 
 | Implement and Test FacultyDirectory | Devin | 11/22/22 | Complete | 
 | Update ResistrationManager | Drew | 11/25/22 | Complete |
-| Testing | Pair Programming | 11/27/22 | In progress |
-| Deployment | Erik | 11/28/22 | Pending | 
+| Testing | Pair Programming | 11/27/22 | Complete |
+| Deployment | Erik | 11/28/22 | Complete | 
 
 # Lab 9
 
