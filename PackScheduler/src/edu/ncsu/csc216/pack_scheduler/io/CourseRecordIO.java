@@ -93,7 +93,20 @@ public class CourseRecordIO {
 			  lineScan.close();
 	    	  throw new IllegalArgumentException();
 	      } else if ("A".equals(meetingDays)) {
-	    	  Course currentCourse = new Course(name, title, section, credits, instructorID, enrollmentCap, meetingDays);
+	    	  Course currentCourse = new Course(name, title, section, credits, null, enrollmentCap, meetingDays);
+	    	//NEW: see if there is a faculty member with the instructor id, if so, add Course to Faculty's faculty schedule.
+			  FacultyDirectory fd = RegistrationManager.getInstance().getFacultyDirectory();
+			  String[][] fdStr = fd.getFacultyDirectory();
+			  //System.out.println(fdStr.length);
+			  for(int i = 0; i < fdStr.length; i++) {
+				  if(fdStr[i][2].equals(instructorID)) {
+					  //System.out.println("This courses IID: " + currentCourse.getInstructorId());
+					  fd.getFacultyById(instructorID).getSchedule().addCourseToSchedule(currentCourse);
+					  currentCourse.setInstructorId(instructorID);
+					  lineScan.close();
+					  return currentCourse;
+				  }
+			  }
 	    	  // Closes the scanner.
 			  lineScan.close();
 //	    	  validCourseCount++;
