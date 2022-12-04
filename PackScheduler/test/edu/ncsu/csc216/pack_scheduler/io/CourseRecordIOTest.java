@@ -91,12 +91,14 @@ public class CourseRecordIOTest {
 		manager = RegistrationManager.getInstance();
 		assertEquals(manager.getFacultyDirectory().getFacultyDirectory().length, 0);
 		manager.getFacultyDirectory().addFaculty("Josh", "Young", "jdyoung2", "jdyoung2@ncsu.edu", "password", "password", 2);
-		
+		manager.getFacultyDirectory().addFaculty("John", "Tetter", "jctetter", "jctetter@ncsu.edu", "password", "password", 2);
 		try {
 			SortedList<Course> courses = CourseRecordIO.readCourseRecords(validTestFile);
-			assertEquals(13, courses.size());
+			assertEquals(14, courses.size());
 			assertEquals(courses.get(0).getInstructorId(), "jdyoung2");
 			assertEquals(courses.get(1).getInstructorId(), null);
+			assertEquals(courses.get(2).getInstructorId(), null);
+			assertEquals(courses.get(6).getInstructorId(), "jctetter");
 			
 //			for (int i = 0; i < validCourses.length; i++) {
 //				assertEquals(validCourses[i], courses.get(i).toString());
