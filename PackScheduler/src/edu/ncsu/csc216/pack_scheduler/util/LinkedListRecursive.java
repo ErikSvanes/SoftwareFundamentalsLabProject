@@ -198,7 +198,7 @@ public class LinkedListRecursive<E> {
 		 * @param element the element to check the data on
 		 * @return true if the element matches the data, and false if the node is null
 		 */
-		private boolean contains(E element) {
+		public boolean contains(E element) {
 			if (data.equals(element)) {
 				return true;
 			} else if (next == null) {
@@ -214,7 +214,7 @@ public class LinkedListRecursive<E> {
 		 * @param element the element to add at the end of the list
 		 * @return true if the element is added
 		 */
-		private boolean add(E element) {
+		public boolean add(E element) {
 			if (next == null) {
 				next = new ListNode(element, null);
 				return true;
@@ -229,7 +229,7 @@ public class LinkedListRecursive<E> {
 		 * @param index   the index to add the element to
 		 * @param element the element to add to the list
 		 */
-		private void add(int index, E element) {
+		public void add(int index, E element) {
 			if (index == 1) {
 				next = new ListNode(element, next);
 				return;
@@ -244,7 +244,7 @@ public class LinkedListRecursive<E> {
 		 * @param index the index to get the element
 		 * @return the element at the specified index
 		 */
-		private E get(int index) {
+		public E get(int index) {
 			if (index == 0) {
 				return data;
 			}
@@ -294,7 +294,7 @@ public class LinkedListRecursive<E> {
 		 * @param element the element to change the data to
 		 * @return the previous data at that element
 		 */
-		private E set(int index, E element) {
+		public E set(int index, E element) {
 			if (index == 0) {
 				E rtn = data;
 				data = element;
